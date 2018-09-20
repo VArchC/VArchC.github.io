@@ -113,7 +113,7 @@
 
 <meta itemprop="datePublished" content="2018-09-20T13:36:00-03:00" />
 <meta itemprop="dateModified" content="2018-09-20T13:36:00-03:00" />
-<meta itemprop="wordCount" content="0">
+<meta itemprop="wordCount" content="386">
 
 
 
@@ -129,6 +129,74 @@
 <div id="post" itemprop="articleBody">
     
     
+
+<p>In 25 September 2018 we presented our first paper presenting
+<a href="/adele/">the ADeLe language</a> and the <a href="/">VArchC</a> framework. Our paper,
+<em>ADeLe: Rapid Architectural Simulation for Approximate Hardware</em> focuses on how
+our framework represents approximations in a high-level architecture level.</p>
+
+<h2 id="abstract">Abstract</h2>
+
+<p>Recent research has introduced approximate hardware units that produce incorrect
+outputs deterministically or probabilistically for some small subset of inputs
+but allow significantly higher throughput or lower power than their error-free
+counterparts. The integration, validation, and evaluation of these approximate
+units in architectures and processors, however, remains challenging. In this
+paper, we introduce <em>ADeLe</em>, a high-level language for the description,
+configuration, and integration of approximate hardware units into processors.
+<em>ADeLe</em> reduces the design effort for approximate hardware by modeling
+approximations at a high level of abstraction and automatically injecting them
+into a processor model for architectural simulation. Approximations in ADeLe
+may modify or completely replace the functional behavior of instructions
+according to user-defined policies. Instructions may be approximated
+deterministically or probabilistically (e.g., based on operating voltage and
+frequency). To allow for controlled testing, approximations may be enabled and
+disabled from software.  Energy is automatically accounted based on
+customizable models that consider the potential power savings of the
+approximations that are enabled in the system. <em>ADeLe</em> provides designers with
+a generic and flexible verification framework, allowing them to easily evaluate
+the energy-quality trade-offs of their designs in applications. We demonstrate
+the language and corresponding framework by introducing different approximation
+techniques into a processor model, on top of which we run selected applications.
+We demonstrate <em>ADeLe</em> using 6 approximate designs with 4 image processing and 2
+floating point applications. Our experiments show how <em>ADeLe</em> may be used to
+generate approximate CPUs and to evaluate energy-quality trade-offs for
+different applications with reduced effort.</p>
+
+<h2 id="content">Content</h2>
+
+<ul>
+<li><p>Full paper PDF (soon)</p></li>
+
+<li><p>Presentation (PDF - soon)</p></li>
+
+<li><p>Link to conference proceedings (soon)</p></li>
+</ul>
+
+<h2 id="repositories">Repositories</h2>
+
+<ul>
+<li><p><a href="https://github.com/VArchC/ArchC">VArchC framework</a><br />
+Refer to the documentation for <a href="https://github.com/VArchC/ArchC">installation instructions</a>.</p></li>
+
+<li><p><a href="https://github.com/VArchC/MIPS32r2/tree/sbac-pad2018">MIPS CPU Model</a><br />
+Refer to the documentation for <a href="/docs/simulator/cpu/">more information on CPU models</a>.</p></li>
+
+<li><p><a href="https://github.com/VArchC/Testbench">Test applications</a><br />
+Refer to the documentation for more information on how to <a href="/docs/app">run an application</a> and
+<a href="/docs/output">analyze the results</a>.</p></li>
+</ul>
+
+<h2 id="cite-us">Cite us</h2>
+
+<pre><code>@INPROCEEDINGS{ADeLe-SBAC2018,
+  author={I. B. Felzmann and M. M. Susin and L. Duenha and R. Azevedo and L. F. Wanner},
+  booktitle={2018 30th International Symposium on Computer Architecture and High Performance Computing (SBAC-PAD)},
+  title={ADeLe: Rapid Architectural Simulation for Approximate Hardware},
+  year={2018},
+  }
+</code></pre>
+
 
 </div>
 

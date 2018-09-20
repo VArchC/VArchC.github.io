@@ -115,7 +115,8 @@ git clone https://github.</description>
       <pubDate>Thu, 20 Sep 2018 13:37:00 -0300</pubDate>
       
       <guid>/blog/wscad2018/</guid>
-      <description></description>
+      <description>In 1 October 2018 we presented our study on how approximated memories impact the energy efficiency of applications in various domains.
+Abstract Approximate memories can lower energy consumption at expense of incurring errors in some of the read/write operations. While these errors may be tolerated in some cases, in general, parts of the application must be re-executed to achieve usable results when a large number of errors occur. Frequent re-executions may, in turn, attenuate or negate energy benefits obtained from using approximate memories.</description>
     </item>
     
     <item>
@@ -124,7 +125,8 @@ git clone https://github.</description>
       <pubDate>Thu, 20 Sep 2018 13:36:00 -0300</pubDate>
       
       <guid>/blog/sbac-pad2018/</guid>
-      <description></description>
+      <description>In 25 September 2018 we presented our first paper presenting the ADeLe language and the VArchC framework. Our paper, ADeLe: Rapid Architectural Simulation for Approximate Hardware focuses on how our framework represents approximations in a high-level architecture level.
+Abstract Recent research has introduced approximate hardware units that produce incorrect outputs deterministically or probabilistically for some small subset of inputs but allow significantly higher throughput or lower power than their error-free counterparts.</description>
     </item>
     
     <item>
