@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>/docs/introduction/</loc>
+    <lastmod>2018-09-15T10:41:40-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/docs/</loc>
+    <lastmod>2018-09-14T10:09:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/docs/simulator/cpu/</loc>
+    <lastmod>2018-09-20T12:21:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/docs/adele/models/instruction/</loc>
+    <lastmod>2018-09-20T11:09:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/docs/adele/overview/</loc>
+    <lastmod>2018-09-20T11:07:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/docs/installation/</loc>
+    <lastmod>2018-09-13T15:24:38-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/docs/simulator/adf/</loc>
+    <lastmod>2018-09-20T12:22:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/docs/adele/models/energy/</loc>
+    <lastmod>2018-09-20T11:09:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/docs/adele/models/</loc>
+    <lastmod>2018-09-20T11:08:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/docs/adele/</loc>
+    <lastmod>2018-09-14T10:09:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/docs/simulator/models/</loc>
+    <lastmod>2018-09-20T12:23:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/docs/simulator/</loc>
+    <lastmod>2018-09-20T12:18:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/docs/adele/models/probability/</loc>
+    <lastmod>2018-09-20T11:09:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/docs/adele/adf/</loc>
+    <lastmod>2018-09-20T11:07:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/wscad2018/</loc>
+    <lastmod>2018-09-20T13:37:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/sbac-pad2018/</loc>
+    <lastmod>2018-09-20T13:36:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/first/</loc>
+    <lastmod>2018-09-20T13:35:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/docs/app/</loc>
+    <lastmod>2018-09-20T12:25:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/docs/adele/models/group/</loc>
+    <lastmod>2018-09-20T11:11:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/docs/output/</loc>
+    <lastmod>2018-09-20T12:27:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/docs/adele/models/approximation/</loc>
+    <lastmod>2018-09-20T11:12:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/publications/</loc>
+    <lastmod>2018-09-20T12:57:23-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/</loc>
+    <lastmod>2018-09-20T13:37:00-03:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/</loc>
+    <lastmod>2018-09-15T10:41:40-03:00</lastmod>
+  </url>
+  
+</urlset>

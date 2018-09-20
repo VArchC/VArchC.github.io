@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Documentation on VArchC</title>
+    <link>/docs/</link>
+    <description>Recent content in Documentation on VArchC</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 14 Sep 2018 10:09:00 -0300</lastBuildDate>
+    
+	<atom:link href="/docs/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Introduction to VArchC</title>
+      <link>/docs/introduction/</link>
+      <pubDate>Sat, 15 Sep 2018 10:41:40 -0300</pubDate>
+      
+      <guid>/docs/introduction/</guid>
+      <description>What is VArchC VArchC is a framework specially designed to represent computer architectures subjected to Approximate Computing.</description>
+    </item>
+    
+    <item>
+      <title>Installing VArchC</title>
+      <link>/docs/installation/</link>
+      <pubDate>Thu, 13 Sep 2018 15:24:38 -0300</pubDate>
+      
+      <guid>/docs/installation/</guid>
+      <description>Dependencies  GNU autotools:
+ m4 autoconf automake libtool  Build tools:
+ GCC GNU Make  GNU Bison
+ GNU Flex
+ SystemC (installation steps included below)
+  Build and Install  Create a directory to store VArchC and access it
+ Build and install SystemC
+wget http://www.accellera.org/images/downloads/standards/systemc/systemc-2.3.1.tgz tar -xvf systemc-2.3.1.tgz cd systemc-2.3.1 ./configure --prefix=$(pwd)/../SystemC/ make make install cd ../  Build and install ArchC
+git clone https://github.</description>
+    </item>
+    
+    <item>
+      <title>Running an application</title>
+      <link>/docs/app/</link>
+      <pubDate>Thu, 20 Sep 2018 12:25:00 -0300</pubDate>
+      
+      <guid>/docs/app/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Collecting energy statistics</title>
+      <link>/docs/output/</link>
+      <pubDate>Thu, 20 Sep 2018 12:27:00 -0300</pubDate>
+      
+      <guid>/docs/output/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
