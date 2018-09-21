@@ -17,7 +17,7 @@
       <pubDate>Thu, 20 Sep 2018 11:07:00 -0300</pubDate>
       
       <guid>/docs/adele/overview/</guid>
-      <description></description>
+      <description>An ADeLe use case Our example targets a designer who wants to evaluate the impact of a new register bank design, powered by an adjustable supply voltage. In the typical hardware development flow, the designer would model the hardware using a Hardware Description Language (HDL), evaluate it in a Register Transfer Level (RTL) simulator and synthesize it to obtain power and timing data, back annotating this information to the netlist for further simulation.</description>
     </item>
     
     <item>

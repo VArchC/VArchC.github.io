@@ -113,7 +113,7 @@
 
 <meta itemprop="datePublished" content="2018-09-20T13:35:00-03:00" />
 <meta itemprop="dateModified" content="2018-09-20T13:35:00-03:00" />
-<meta itemprop="wordCount" content="0">
+<meta itemprop="wordCount" content="544">
 
 
 
@@ -129,6 +129,85 @@
 <div id="post" itemprop="articleBody">
     
     
+
+<h2 id="what-is-varchc">What is VArchC?</h2>
+
+<p>VArchC is a framework specially designed to represent computer architectures
+subjected to Approximate Computing. VArchC works as an extension to the
+<a href="http://www.archc.org/">ArchC</a> Architecture Description Language, enabling its
+tools to automatically generate processor models that implement approximation
+techniques. Using VArchC, alla designer needs to inject approximations in a
+target architecture is an ArchC CPU model, specific high-level software models
+of the desired approximation behaviors, and a high-level configuration file
+that links them. This configuration file is written using
+<a href="/adele/">the ADeLe language</a>.</p>
+
+<h2 id="how-does-it-work">How does it work?</h2>
+
+<p>Architecture simulation using VArchC is based on a
+<a href="/docs/adele/models/">set of models</a>. These models are pieces of high-level
+software that define how the architecture behaves when operating, be it in its
+<a href="/docs/simulator/cpu/">normal, not approximate state</a> (the CPU model) or a state
+at which <a href="/docs/simulator/models/">approximations are injected</a> (the
+approximation models). VArchC then uses a configuration file written in
+<a href="/adele/">the ADeLe language</a> to join all the pieces together: the original CPU
+model is augmented to include each approximation behavior, generating one single
+simulator that implements all the represented approximations.</p>
+
+<p>A VArchC-generated simulator can run binaries compiled to its target
+architecture, applying the defined behaviors for each instruction. The modeled
+approximations are seen as <em>states</em> of the architecture, similarly to power
+states of modern processors. These states are controled using a memory-maped
+hardware register, so the guest application can define itself under certain
+approximations by writing and reading from this register. When a simulator is
+generated, a C library, in form of a header file, is also automatically written.
+This library defines the communication interface between the guest application
+and the host simulator. Regardless of the activation of such interface, the
+simulator is still able to run applications, only not giving them control over
+the approximate states.</p>
+
+<h2 id="how-do-i-obtain-varchc">How do I obtain VArchC?</h2>
+
+<p>VArchC source code is freely available from our
+<a href="https://github.com/VArchC">repository</a>.</p>
+
+<h2 id="how-do-i-obtain-models">How do I obtain models?</h2>
+
+<p>VArchC uses <a href="http://www.archc.org/downloads.html">ArchC CPU models</a> to represent
+the behavior of target architectures. Some of the models may need some slight
+modification to run under VArchC, however.
+<a href="https://github.com/VArchC">In our repository</a> you can find CPU models that were
+already adapted to work with VArchC. Refer to
+<a href="/docs/simulator/cpu/">our documentation on CPU models</a> to know more about what
+changes are needed to make an ArchC model run under VArchC. Refer to the
+<a href="http://www.archc.org/doc.html">ArchC documentation</a> to know more about how to
+build your own CPU models.</p>
+
+<p>VArchC also uses <a href="/docs/adele/models/">approximation models</a> to dictate the
+behavior under approximated states. <a href="/docs/adele/models">Our documentation</a>
+how these models are written and used, so you can write your own models for a
+given approximation technique. Moreover, we are working towards releasing
+pre-tested models of approximation techniques available in the literature. These
+will be available in <a href="https://github.com/VArchC">our repository</a>.</p>
+
+<h2 id="who-is-responsible-for-varchc">Who is responsible for VArchC?</h2>
+
+<p>VArchC is developed and maintained at the
+<a href="http://lsc.ic.unicamp.br/">Computer Systems Laboratory</a>, part of the
+<a href="http://www.ic.unicamp.br/">Institute of Computing</a> of the
+<a href="http://www.unicamp.br/">University of Campinas</a>. Both VArchC and the ADeLe
+language were conceptualized and built as part of the masters thesis of Isaías
+B. Felzmann, advised by <a href="http://www.lucaswanner.com/">Prof. Dr. Lucas Wanner</a>.</p>
+
+<h2 id="how-can-i-help-varchc">How can I help VArchC?</h2>
+
+<p>If you use VArchC in your academic work, please
+<a href="/blog/sbac-pad2018/#cite-us">cite us</a>. We are more than happy to reference your
+work in <a href="/publications/#others-publications">our website</a>.</p>
+
+<p>If you want to contribute with developing VArchC, we are happy to receive your
+pull request in <a href="https://github.com/VArchC">our repository</a>.</p>
+
 
 </div>
 

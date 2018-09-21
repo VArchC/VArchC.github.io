@@ -32,7 +32,7 @@
 
 
   <meta property="og:title" content="ADeLe Design Overview" />
-<meta property="og:description" content="" />
+<meta property="og:description" content="An ADeLe use case Our example targets a designer who wants to evaluate the impact of a new register bank design, powered by an adjustable supply voltage. In the typical hardware development flow, the designer would model the hardware using a Hardware Description Language (HDL), evaluate it in a Register Transfer Level (RTL) simulator and synthesize it to obtain power and timing data, back annotating this information to the netlist for further simulation." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/docs/adele/overview/" /><meta property="article:published_time" content="2018-09-20T11:07:00-03:00"/>
 <meta property="article:modified_time" content="2018-09-20T11:07:00-03:00"/>
@@ -111,6 +111,112 @@
     </div> 
     <div id="kube-component" class="content">
         
+
+<h2 id="an-adele-use-case">An ADeLe use case</h2>
+
+<p>Our example targets a designer who wants to evaluate the impact of a new
+register bank design, powered by an adjustable supply voltage. In the typical
+hardware development flow, the designer would model the hardware using a
+Hardware Description Language (HDL), evaluate it in a Register Transfer Level
+(RTL) simulator and synthesize it to obtain power and timing data, back
+annotating this information to the netlist for further simulation. At this point,
+the designer has data on how the register bank behaves under different voltage
+levels and characterization of soft errors when reading and writing data to
+certain locations, as well as their occurrence distribution. In the context of
+Approximate Computing, errors under overscaled supply voltages may be seen as
+approximations that trade accuracy for energy savings in the computation.</p>
+
+<p>The HDL model and RTL simulation data alone cannot provide any information about
+how the new design impacts real applications. A CPU simulator may help in
+evaluating and validating the design, and its integration in a system.
+Nevertheless, extensive effort would be required to adapt the simulator in order
+to inject code that represents the faulty register bank, to develop a control
+mechanism that parameterizes it according to the supply voltage, and to aggregate
+the results of RTL simulation to represent energy metrics.</p>
+
+<h2 id="the-design-flow">The design flow</h2>
+
+<p>ADeLe proposes an enhanced design flow, that eliminates the effort of modifying
+the CPU simulator source code directly. Taking, as inputs, a generic model of
+the approximation and a high-level description of how it interacts with the
+target CPU model, an ADeLe-compatible CPU simulator automatically modifies its
+execution flow to represent the approximated behavior.</p>
+
+<p><img src="/docs/flow.png" alt="The design flow" /></p>
+
+<p>The ADeLe design flow requires three <em>models</em>: the
+<a href="/docs/adele/models/instruction">instruction model</a> describes the black-box
+behavior of the approximation at instruction-level, in terms of its input data
+and output results; the <a href="/docs/adele/models/probability">probability model</a>
+defines whether the described behavior should happen instead of the default
+execution behavior in the simulator; and the
+<a href="/docs/adele/models/energy">energy model</a> computes how much energy was spent
+to execute the instruction.</p>
+
+<h2 id="modeling-the-approximated-register-bank">Modeling the approximated register bank</h2>
+
+<p>In our use-case scenario described at the beginning of this Section, the
+designer would implement the approximation model as a method that takes as input
+the handled data and outputs it with some random modification, modeling the
+unexpected bit flips perceived during RTL simulation when the register bank is
+powered by a lower supply voltage &ndash; in the ADeLe language, such an approximation
+model is called <a href="/docs/adele/models/instruction/#data-modifiers">data modifier</a>.</p>
+
+<pre><code class="language-C">DM RandomBitFlip(source_t source, word &amp;data) {
+  int bit = rand() % (8 * sizeof data);
+    data = data ^ (0x1 &lt;&lt; bit);
+}
+</code></pre>
+
+<p>The designer then writes a <a href="/docs/adele/models/probability">probability model</a>
+that decides, from the current register bank supply voltage, whether the bit
+flips would happen on the data or not. The probability simply returns a boolean
+indicating that, and the current supply voltage may be defined as an
+<a href="/docs/adele/models/op/">operating parameter</a>.</p>
+
+<pre><code class="language-C">PM LowVddProb() {
+  return MagicVoltageToBool(OP['voltage']);
+}
+</code></pre>
+
+<p>The <a href="/docs/adele/models/energy/">energy model</a> defines how much energy, in
+Joules, one single instruction execution uses. Since we are not interested
+in exact figures at this point, but in knowing how much savings we get, this
+can be simply translated as an scaling factor, another
+<a href="/docs/adele/models/op/">operating parameter</a>.</p>
+
+<pre><code class="language-C">EM SimpleEnergy() {
+  return OP['scaling'];
+}
+</code></pre>
+
+<h2 id="the-adele-description-file">The ADeLe Description File</h2>
+
+<p>Finally, an <a href="/docs/adele/adf/">ADeLe Description File</a> is needed to link the
+models. The ADeLe Description File declares the three needed models, defines
+the operating parameters for each state (the different voltages and scalings)
+and when the models should be instantiated.</p>
+
+<pre><code>DM RandomBitFlip();
+PM LowVddProb();
+EM SimpleEnergy();
+
+OP default_op  = {.voltage = 1.0,    // V
+                  .scaling = 1.0};   // Scalar
+OP low_vdd_op  = {.voltage = 0.8,    // V
+                  .scaling = 0.6};   // Scalar
+
+energy = SimpleEnergy();
+parameters = default_op;
+
+approximation LOW_VDD_REGBANK {
+  parameters =    low_vdd_op;
+  regbank_read =  RandomBitFlip();
+  regbank_write = RandomBitFlip();
+  probability =   LowVddProb();
+}
+</code></pre>
+
         <hr />
         <h2> More documentation </h2>
         <ol>
@@ -131,14 +237,14 @@
   
   <li>
     
-      The ADeLe Language
+      <a href="/docs/adele/">The ADeLe Language</a>
     
     
     <ol>
   
   <li>
     
-      ADeLe Design Overview
+      <a href="/docs/adele/overview/">ADeLe Design Overview</a>
     
     
   </li>
@@ -152,7 +258,7 @@
   
   <li>
     
-      The Instruction Model
+      <a href="/docs/adele/models/instruction/">The Instruction Model</a>
     
     
   </li>

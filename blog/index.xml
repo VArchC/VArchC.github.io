@@ -37,7 +37,7 @@ Abstract Recent research has introduced approximate hardware units that produce 
       <pubDate>Thu, 20 Sep 2018 13:35:00 -0300</pubDate>
       
       <guid>/blog/first/</guid>
-      <description></description>
+      <description>What is VArchC? VArchC is a framework specially designed to represent computer architectures subjected to Approximate Computing. VArchC works as an extension to the ArchC Architecture Description Language, enabling its tools to automatically generate processor models that implement approximation techniques. Using VArchC, alla designer needs to inject approximations in a target architecture is an ArchC CPU model, specific high-level software models of the desired approximation behaviors, and a high-level configuration file that links them.</description>
     </item>
     
   </channel>
