@@ -32,7 +32,8 @@
 
 
   <meta property="og:title" content="The Instruction Model" />
-<meta property="og:description" content=" Implementation modifiers Data Modifiers " />
+<meta property="og:description" content="The Instruction Model is the main abstraction to define what is the behavior that a given approximation has in the target application. When the architecture simulator, while running an application, decodes an instruction, it checks for the activated Instruction Models to look for what it should do. There are two types of instruction models: implementation modifiers and data modifiers.
+Implementation modifiers Implementation modifiers directly affect the operation an instruction executes." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/docs/adele/models/instruction/" /><meta property="article:published_time" content="2018-09-20T11:09:00-03:00"/>
 <meta property="article:modified_time" content="2018-09-20T11:09:00-03:00"/>
@@ -112,9 +113,84 @@
     <div id="kube-component" class="content">
         
 
+<p>The Instruction Model is the main abstraction to define what is the behavior that a given approximation has in the target application.
+When the architecture simulator, while running an application, decodes an instruction, it checks for the activated Instruction Models to look for what it should do. There are two types of instruction models: implementation modifiers and data modifiers.</p>
+
 <h2 id="implementation-modifiers">Implementation modifiers</h2>
 
+<p>Implementation modifiers directly affect the operation an instruction executes.
+These models may replace or augment the original instruction behavior (defined by the <a href="/docs/simulator/cpu/">CPU Model</a>).</p>
+
+<p>An implementation modifier is a C++ method that returns nothing (void) and may receive ordinary parameters, including <a href="/docs/adele/models/word/">words</a>, as defined by the architecture.
+They are identified by the IM keyword as type idendifier.
+When a method uses a word as parameter, it is by default passed as a reference, which means that any changes to the word are reflected in the original structure it refers to.</p>
+
+<p>The example below show a simple implementation modifier that performs an addition operation. Naturally, it should receive three words as parameters, two as the operands and one to store the result.</p>
+
+<pre><code class="language-C++">IM MyAdd(word r, word a, word b) {
+  r = a + b;
+}
+</code></pre>
+
+<p>This simple example intends to replace the behavior of a given instruction.
+In ADeLe, this is called an &ldquo;alternate behavior&rdquo;, and is declared in the ADeLe Description File using the keyword <em>alt_behavior</em>.
+ADeLe can also define an implementation modifier to be called before or after an instruction execution.
+In the example below, a designer wants to trace all addition operations performed by an application for later offline analysis.
+So, they define two methods, one to execute before the instruction and the other after, to capture the data and print to a file handler <em>add_dump</em>.</p>
+
+<pre><code class="language-C++">IM BeforeAdd (word a, word b) {
+  add_dump &lt;&lt; static_cast&lt;unsigned int&gt;(a) &lt;&lt; &quot; + &quot; &lt;&lt; static_cast&lt;unsigned int&gt;(b) &lt;&lt; &quot; = &quot;;
+}
+
+IM AfterAdd (word r) {
+  add_dump &lt;&lt; static_cast&lt;unsigned int&gt;(r) &lt;&lt; std::endl;
+}
+</code></pre>
+
+<p>These models that execute before and after an instruction operation are called, in the ADeLe Description File, <em>pre_behavior</em> and <em>post_behavior</em>, respectively.
+For more information on how to instantiate the implementation modifiers, see <a href="/docs/adele/adf/#instantiating-an-implementation-modifier">Instantiating an implementation modifier</a></p>
+
 <h2 id="data-modifiers">Data Modifiers</h2>
+
+<p>Data modifiers diverge from implementation modifiers because they do not explicitly change the operation performed by an instruction.
+Instead, they affect just the data, without any knownledge of what application is being executed.</p>
+
+<p>Fow example, assume one wants do model a 16-bit ALU in a 32-bit architecture.
+Since the word size in the architecture is 32-bit, the idea is to truncate all data read and written by logical and arithmetical operations to 16-bit.
+Using a data modifier, this is a transparent change to the instruction implementation.
+The example below used bitwise operations to truncate the data while maintaining, when possible, the value as a signed operand.</p>
+
+<pre><code class="language-C++">DM Truncate32to16(source_t source, uint64_t&amp; data) {
+  if (data &amp; 0x80000000 != 0x0) {
+    data = (data &amp; 0x7FFF) | 0xFFFFFFFFFFFF8000;
+  }
+  else {
+    data = data &amp; 0x7FFF;
+  }
+}
+</code></pre>
+
+<p>A data modifier automatically receives, from its caller, two parameters: a data structure containing information about the caller routine and source of the data (<a href="#the-source-structure">source_t</a>) and a reference to the data itself, encoded as an unsigned 64-bit value (currently the largest data word length supported).</p>
+
+<h3 id="the-source-structure">The source structure</h3>
+
+<p>The source structure encondes information on where that triggered a data modifier call come from.
+This is a C++ structure of the form:</p>
+
+<pre><code class="language-C++">struct source_t {
+  
+};
+</code></pre>
+
+<p>The source structure is intended to be used as a filter for data modifiers.
+For example, if one needs to isolate the first thousand words on memory to apply some modifier, it could be implemented like that:</p>
+
+<pre><code class="language-C++">DM MemoryIsolation(source_t source, uint64_t&amp; data) {
+  if (source.address &lt; 1000) {
+    // Implement modification
+  }
+}
+</code></pre>
 
         <hr />
         <h2> More documentation </h2>
@@ -150,10 +226,17 @@
   
   <li>
     
-      Models and Abstractions
+      <a href="/docs/adele/models/">Models and Abstractions</a>
     
     
     <ol>
+  
+  <li>
+    
+      The Word Abstraction
+    
+    
+  </li>
   
   <li>
     
@@ -164,14 +247,21 @@
   
   <li>
     
-      The Energy Model
+      <a href="/docs/adele/models/energy/">The Energy Model</a>
     
     
   </li>
   
   <li>
     
-      The Probability Model
+      <a href="/docs/adele/models/probability/">The Probability Model</a>
+    
+    
+  </li>
+  
+  <li>
+    
+      The Operating Parameters
     
     
   </li>
@@ -197,7 +287,7 @@
   
   <li>
     
-      The ADeLe Description File
+      <a href="/docs/adele/adf/">The ADeLe Description File</a>
     
     
   </li>

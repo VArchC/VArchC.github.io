@@ -111,8 +111,76 @@
     <div id="hero">
       <h1> Documentation </h1>
       
+      <h2> Models and Abstractions </h2>
+      
     </div> 
     <div id="kube-component" class="content">
+        
+        
+
+<p>Approximations in VArchC are described using the ADeLe language according to models and abstractions. These formally represent the behavioral aspects of each approximation in an architectural level.
+In VArchC, all models are C++ structures.</p>
+
+<h3 id="word-docs-adele-models-word"><a href="/docs/adele/models/word">Word</a></h3>
+
+<p>Words are the primary data abstraction within ADeLe.
+They represent a data or address word for the target architecture.
+All the instructions operate on words when dealing with data.</p>
+
+<p>See <a href="/docs/adele/models/word/">The Word Abstraction</a> for more information and usage examples.</p>
+
+<h3 id="instruction-model-docs-adele-models-instruction"><a href="/docs/adele/models/instruction/">Instruction Model</a></h3>
+
+<p>Instruction models define the final behavior of an approximation.
+They tell the simulator what should happen to an instruction execution when it is affected by an approximation.
+There are two types of instruction models:</p>
+
+<ul>
+<li><p>The <a href="/docs/adele/models/instruction/#implementation-modifiers">implementation modifiers</a> directly affect the operation performed by an instruction, augmenting it or replacing by a different operation.
+These can represent, for example, underdesigned functional units at a target architecture.</p></li>
+
+<li><p>The <a href="/docs/adele/models/instruction/#data-modifiers">data modifiers</a> affects only the data read or written by an instruction execution, with no information of what is the operation being performed.
+These can represent, for example, precision tuning approximations or error-prone memories.</p></li>
+</ul>
+
+<p>See <a href="/docs/adele/models/instruction/">The Instruction Model</a> for more information and instruction model examples.</p>
+
+<h3 id="energy-model-docs-adele-models-energy"><a href="/docs/adele/models/energy">Energy Model</a></h3>
+
+<p>Energy models define how much energy one single instruction execution uses.</p>
+
+<p>See <a href="/docs/adele/models/energy/">The Energy Model</a> for more information and energy model examples.</p>
+
+<h3 id="probability-model-docs-adele-models-probability"><a href="/docs/adele/models/probability">Probability Model</a></h3>
+
+<p>Probability models define when an approximation behavior should take place or not.</p>
+
+<p>See <a href="/docs/adele/models/probability/">The Probability Model</a> for more information and probability model examples.</p>
+
+<h3 id="operating-parameters-docs-adele-models-op"><a href="/docs/adele/models/op/">Operating Parameters</a></h3>
+
+<p>The operating parameters are a key integration mechanism between models.
+They are a data structure containing information from the simulation architecture that is visible and customizable from all models.
+They can represent, for example, physical parameters of the target architecture.</p>
+
+<p>See <a href="/docs/adele/models/op/">Operating Parameters</a> for more information and operating parameters examples.</p>
+
+<h3 id="groups-docs-adele-models-group"><a href="/docs/adele/models/group/">Groups</a></h3>
+
+<p>Groups are used to group similar instructions together and define some models to all instructions in the group.
+Thus, for example, if a large number of instructions are affected by different approximations, a group may be conveniently define containing these instructions.</p>
+
+<p>See <a href="/docs/adele/models/group/">The Group Abstraction</a> for more information and examples on how to declare groups.</p>
+
+<h3 id="approximations-docs-adele-models-approximation"><a href="/docs/adele/models/approximation">Approximations</a></h3>
+
+<p>Approximations are abstractions of an approximated state in the target architecture.
+When an approximation is activated, all the models associated with it are used to model the behavior of instructions.</p>
+
+<p>See <a href="/docs/adele/models/approximation/">The Approximation Abstraction</a> for more information and examples on how to declare approximations.</p>
+
+        <hr />
+        <h2> More documentation </h2>
         
         <ol>
   
@@ -146,10 +214,17 @@
   
   <li>
     
-      Models and Abstractions
+      <a href="/docs/adele/models/">Models and Abstractions</a>
     
     
     <ol>
+  
+  <li>
+    
+      The Word Abstraction
+    
+    
+  </li>
   
   <li>
     
@@ -160,14 +235,21 @@
   
   <li>
     
-      The Energy Model
+      <a href="/docs/adele/models/energy/">The Energy Model</a>
     
     
   </li>
   
   <li>
     
-      The Probability Model
+      <a href="/docs/adele/models/probability/">The Probability Model</a>
+    
+    
+  </li>
+  
+  <li>
+    
+      The Operating Parameters
     
     
   </li>
@@ -193,7 +275,7 @@
   
   <li>
     
-      The ADeLe Description File
+      <a href="/docs/adele/adf/">The ADeLe Description File</a>
     
     
   </li>

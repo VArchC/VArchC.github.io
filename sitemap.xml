@@ -13,6 +13,11 @@
   </url>
   
   <url>
+    <loc>/docs/adele/models/word/</loc>
+    <lastmod>2018-09-20T11:09:00-03:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/docs/simulator/cpu/</loc>
     <lastmod>2018-09-20T12:21:00-03:00</lastmod>
   </url>
@@ -70,6 +75,11 @@
   <url>
     <loc>/docs/adele/adf/</loc>
     <lastmod>2018-09-20T11:07:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/docs/adele/models/op/</loc>
+    <lastmod>2018-09-22T13:13:00-03:00</lastmod>
   </url>
   
   <url>

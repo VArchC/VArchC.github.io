@@ -32,7 +32,8 @@
 
 
   <meta property="og:title" content="The Probability Model" />
-<meta property="og:description" content="" />
+<meta property="og:description" content="A probability model is a C&#43;&#43; method that return a boolean value indicating if the approximation it was instantiated on should be executed or not. If a probability model returns true, the instruction and energy models instantiated for the given instruction will be run. Otherwise, the execution will follow its normal flow, not considering any approximated state.
+Probability models are used mostly with probabilistic approximations. For example, consider that an architecture contains a first level cache memory supplied by an adjustable supply voltage." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/docs/adele/models/probability/" /><meta property="article:published_time" content="2018-09-20T11:09:00-03:00"/>
 <meta property="article:modified_time" content="2018-09-20T11:09:00-03:00"/>
@@ -110,7 +111,31 @@
       <h2> The Probability Model </h2>
     </div> 
     <div id="kube-component" class="content">
-        
+        <p>A probability model is a C++ method that return a boolean value indicating if the approximation it was instantiated on should be executed or not.
+If a probability model returns <em>true</em>, the instruction and energy models instantiated for the given instruction will be run.
+Otherwise, the execution will follow its normal flow, not considering any approximated state.</p>
+
+<p>Probability models are used mostly with probabilistic approximations.
+For example, consider that an architecture contains a first level cache memory supplied by an adjustable supply voltage.
+When the supply voltage is lower than nominal, errors in memory accesses start to be perceived.
+For simplicity, we assume as an example that for a supply voltage below 0.5 volts, every memory access will produce error.</p>
+
+<pre><code class="language-C++">PM LowVddMemProbability() {
+  if (OP[&quot;voltage&quot;] &lt; 0.5) {
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+</code></pre>
+
+<p>The example takes advantage of a <em>voltage</em> operating parameter to store the current supply voltage.
+See <a href="/docs/adele/models/op/">The Operating Parameters</a> for more information.</p>
+
+<p>Probability models can take arbitrary arguments upons instantiated, as defined in the ADeLe Description File.
+See <a href="/docs/adele/adf/#instantiating-probability-models">Instantiating probability models</a> for more information.</p>
+
         <hr />
         <h2> More documentation </h2>
         <ol>
@@ -145,10 +170,17 @@
   
   <li>
     
-      Models and Abstractions
+      <a href="/docs/adele/models/">Models and Abstractions</a>
     
     
     <ol>
+  
+  <li>
+    
+      The Word Abstraction
+    
+    
+  </li>
   
   <li>
     
@@ -159,14 +191,21 @@
   
   <li>
     
-      The Energy Model
+      <a href="/docs/adele/models/energy/">The Energy Model</a>
     
     
   </li>
   
   <li>
     
-      The Probability Model
+      <a href="/docs/adele/models/probability/">The Probability Model</a>
+    
+    
+  </li>
+  
+  <li>
+    
+      The Operating Parameters
     
     
   </li>
@@ -192,7 +231,7 @@
   
   <li>
     
-      The ADeLe Description File
+      <a href="/docs/adele/adf/">The ADeLe Description File</a>
     
     
   </li>

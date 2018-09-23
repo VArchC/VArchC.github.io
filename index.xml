@@ -21,6 +21,15 @@
     </item>
     
     <item>
+      <title>The Word Abstraction</title>
+      <link>/docs/adele/models/word/</link>
+      <pubDate>Thu, 20 Sep 2018 11:09:00 -0300</pubDate>
+      
+      <guid>/docs/adele/models/word/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>The CPU Model</title>
       <link>/docs/simulator/cpu/</link>
       <pubDate>Thu, 20 Sep 2018 12:21:00 -0300</pubDate>
@@ -35,7 +44,8 @@
       <pubDate>Thu, 20 Sep 2018 11:09:00 -0300</pubDate>
       
       <guid>/docs/adele/models/instruction/</guid>
-      <description> Implementation modifiers Data Modifiers </description>
+      <description>The Instruction Model is the main abstraction to define what is the behavior that a given approximation has in the target application. When the architecture simulator, while running an application, decodes an instruction, it checks for the activated Instruction Models to look for what it should do. There are two types of instruction models: implementation modifiers and data modifiers.
+Implementation modifiers Implementation modifiers directly affect the operation an instruction executes.</description>
     </item>
     
     <item>
@@ -79,7 +89,8 @@ git clone https://github.</description>
       <pubDate>Thu, 20 Sep 2018 11:09:00 -0300</pubDate>
       
       <guid>/docs/adele/models/energy/</guid>
-      <description></description>
+      <description>The energy model is used by VArchC to compute the energy cost of each single instruction execution. It is a C++ method that returns a double-precision floating-point value (double), which is the energy consumption. An energy model will be called upon execution of every instruction in a test application.
+The complexity of an energy model depends on the required accuracy of energy computation. One simple alternative to compute average relative energy is to use a scaling factor.</description>
     </item>
     
     <item>
@@ -97,7 +108,8 @@ git clone https://github.</description>
       <pubDate>Thu, 20 Sep 2018 11:09:00 -0300</pubDate>
       
       <guid>/docs/adele/models/probability/</guid>
-      <description></description>
+      <description>A probability model is a C++ method that return a boolean value indicating if the approximation it was instantiated on should be executed or not. If a probability model returns true, the instruction and energy models instantiated for the given instruction will be run. Otherwise, the execution will follow its normal flow, not considering any approximated state.
+Probability models are used mostly with probabilistic approximations. For example, consider that an architecture contains a first level cache memory supplied by an adjustable supply voltage.</description>
     </item>
     
     <item>
@@ -106,6 +118,15 @@ git clone https://github.</description>
       <pubDate>Thu, 20 Sep 2018 11:07:00 -0300</pubDate>
       
       <guid>/docs/adele/adf/</guid>
+      <description> Declararing models Declaring operating parameters Defining default conditions Declaring groups Associating instructions to groups Instantiating energy models Instantiating operating parameters Declaring approximations Defining initial conditions Defining affected instructions Instantiating probability models Instantiating energy models Instantiating operating parameters Instantiating an implementation modifier Instantiating a data modifier </description>
+    </item>
+    
+    <item>
+      <title>The Operating Parameters</title>
+      <link>/docs/adele/models/op/</link>
+      <pubDate>Sat, 22 Sep 2018 13:13:00 -0300</pubDate>
+      
+      <guid>/docs/adele/models/op/</guid>
       <description></description>
     </item>
     

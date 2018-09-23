@@ -32,7 +32,8 @@
 
 
   <meta property="og:title" content="The Energy Model" />
-<meta property="og:description" content="" />
+<meta property="og:description" content="The energy model is used by VArchC to compute the energy cost of each single instruction execution. It is a C&#43;&#43; method that returns a double-precision floating-point value (double), which is the energy consumption. An energy model will be called upon execution of every instruction in a test application.
+The complexity of an energy model depends on the required accuracy of energy computation. One simple alternative to compute average relative energy is to use a scaling factor." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/docs/adele/models/energy/" /><meta property="article:published_time" content="2018-09-20T11:09:00-03:00"/>
 <meta property="article:modified_time" content="2018-09-20T11:09:00-03:00"/>
@@ -110,7 +111,27 @@
       <h2> The Energy Model </h2>
     </div> 
     <div id="kube-component" class="content">
-        
+        <p>The energy model is used by VArchC to compute the energy cost of each single instruction execution.
+It is a C++ method that returns a double-precision floating-point value (<em>double</em>), which is the energy consumption.
+An energy model will be called upon execution of every instruction in a test application.</p>
+
+<p>The complexity of an energy model depends on the required accuracy of energy computation.
+One simple alternative to compute average relative energy is to use a scaling factor.
+Thus, instructions unnafected by approximations should have an energy cost of 1.0, while approximated instructions contribute with a cost lower than 1.0.</p>
+
+<pre><code class="language-C++">EM AccurateEnergy() {
+  return 1.0;
+}
+
+EM ApproximateEnergy() {
+  return 0.8;
+}
+</code></pre>
+
+<p>Energy Models can receive arbitrary sets of arguments, defined in the ADeLe Description File.
+Also, when instantiated for single instructions, they can also receive any structure available for Instruction Modifiers.
+See <a href="/docs/adele/adf/#instantiating-energy-models">Instantiating energy models</a> for more information.</p>
+
         <hr />
         <h2> More documentation </h2>
         <ol>
@@ -145,10 +166,17 @@
   
   <li>
     
-      Models and Abstractions
+      <a href="/docs/adele/models/">Models and Abstractions</a>
     
     
     <ol>
+  
+  <li>
+    
+      The Word Abstraction
+    
+    
+  </li>
   
   <li>
     
@@ -159,14 +187,21 @@
   
   <li>
     
-      The Energy Model
+      <a href="/docs/adele/models/energy/">The Energy Model</a>
     
     
   </li>
   
   <li>
     
-      The Probability Model
+      <a href="/docs/adele/models/probability/">The Probability Model</a>
+    
+    
+  </li>
+  
+  <li>
+    
+      The Operating Parameters
     
     
   </li>
@@ -192,7 +227,7 @@
   
   <li>
     
-      The ADeLe Description File
+      <a href="/docs/adele/adf/">The ADeLe Description File</a>
     
     
   </li>
