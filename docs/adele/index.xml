@@ -26,7 +26,8 @@
       <pubDate>Thu, 20 Sep 2018 11:07:00 -0300</pubDate>
       
       <guid>/docs/adele/adf/</guid>
-      <description> Declararing models Declaring operating parameters Defining default conditions Declaring groups Associating instructions to groups Instantiating energy models Instantiating operating parameters Declaring approximations Defining initial conditions Defining affected instructions Instantiating probability models Instantiating energy models Instantiating operating parameters Instantiating an implementation modifier Instantiating a data modifier </description>
+      <description>Whoops! We are sorry this documentation page is not ready yet. We are working to have it available by mid October 2018.
+In the meantime, you may be interested in the ADeLe design overview, in a description example of a CPU Model, or in a more complete example.</description>
     </item>
     
   </channel>
