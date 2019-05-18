@@ -26,7 +26,7 @@
       <pubDate>Thu, 20 Sep 2018 11:09:00 -0300</pubDate>
       
       <guid>/docs/adele/models/word/</guid>
-      <description>Whoops! We are sorry this documentation page is not ready yet. We are working to have it available by mid October 2018.
+      <description>Whoops! We are sorry this documentation page is not ready yet.
 In the meantime, you may be interested in the ADeLe design overview or in a description example of a CPU Model.</description>
     </item>
     
@@ -82,7 +82,7 @@ The complexity of an energy model depends on the required accuracy of energy com
       <pubDate>Thu, 20 Sep 2018 12:18:00 -0300</pubDate>
       
       <guid>/docs/simulator/</guid>
-      <description>Whoops! We are sorry this documentation page is not ready yet. We are working to have it available by mid October 2018.
+      <description>Whoops! We are sorry this documentation page is not ready yet.
 In the meantime, you may be interested in a description example of a CPU Model or in a list of the currently supported ArchC models.</description>
     </item>
     
@@ -102,7 +102,7 @@ Probability models are used mostly with probabilistic approximations. For exampl
       <pubDate>Thu, 20 Sep 2018 11:07:00 -0300</pubDate>
       
       <guid>/docs/adele/adf/</guid>
-      <description>Whoops! We are sorry this documentation page is not ready yet. We are working to have it available by mid October 2018.
+      <description>Whoops! We are sorry this documentation page is not ready yet.
 In the meantime, you may be interested in the ADeLe design overview, in a description example of a CPU Model, or in a more complete example.</description>
     </item>
     
@@ -112,7 +112,7 @@ In the meantime, you may be interested in the ADeLe design overview, in a descri
       <pubDate>Sat, 22 Sep 2018 13:13:00 -0300</pubDate>
       
       <guid>/docs/adele/models/op/</guid>
-      <description>Whoops! We are sorry this documentation page is not ready yet. We are working to have it available by mid October 2018.
+      <description>Whoops! We are sorry this documentation page is not ready yet.
 In the meantime, you may be interested in the ADeLe design overview or in a description example of a CPU Model.</description>
     </item>
     
@@ -151,7 +151,7 @@ Abstract Recent research has introduced approximate hardware units that produce 
       <pubDate>Thu, 20 Sep 2018 12:25:00 -0300</pubDate>
       
       <guid>/docs/app/</guid>
-      <description>Whoops! We are sorry this documentation page is not ready yet. We are working to have it available by mid October 2018.
+      <description>Whoops! We are sorry this documentation page is not ready yet.
 In the meantime, you may be interested in an example of a test application.</description>
     </item>
     
@@ -161,7 +161,7 @@ In the meantime, you may be interested in an example of a test application.</des
       <pubDate>Thu, 20 Sep 2018 11:11:00 -0300</pubDate>
       
       <guid>/docs/adele/models/group/</guid>
-      <description>Whoops! We are sorry this documentation page is not ready yet. We are working to have it available by mid October 2018.
+      <description>Whoops! We are sorry this documentation page is not ready yet.
 In the meantime, you may be interested in the ADeLe design overview or in a description example of a CPU Model.</description>
     </item>
     
@@ -171,7 +171,7 @@ In the meantime, you may be interested in the ADeLe design overview or in a desc
       <pubDate>Thu, 20 Sep 2018 12:27:00 -0300</pubDate>
       
       <guid>/docs/output/</guid>
-      <description>Whoops! We are sorry this documentation page is not ready yet. We are working to have it available by mid October 2018.
+      <description>Whoops! We are sorry this documentation page is not ready yet.
 In the meantime, you may be interested in an example of a test application.</description>
     </item>
     
@@ -181,22 +181,22 @@ In the meantime, you may be interested in an example of a test application.</des
       <pubDate>Thu, 20 Sep 2018 11:12:00 -0300</pubDate>
       
       <guid>/docs/adele/models/approximation/</guid>
-      <description>Whoops! We are sorry this documentation page is not ready yet. We are working to have it available by mid October 2018.
+      <description>Whoops! We are sorry this documentation page is not ready yet.
 In the meantime, you may be interested in the ADeLe design overview or in a description example of a CPU Model.</description>
     </item>
     
     <item>
       <title>Publications</title>
       <link>/publications/</link>
-      <pubDate>Thu, 20 Sep 2018 12:57:23 -0300</pubDate>
+      <pubDate>Sat, 18 May 2019 11:07:00 -0300</pubDate>
       
       <guid>/publications/</guid>
-      <description>Publications from our group  ADeLe: Rapid Architectural Simulation for Approximate Hardware
+      <description>Publications from our group 2019  A framework for modeling and simulation of approximate computing in hardware
+Isaías B. Felzmann (supervised by Prof. Dr. Lucas Wanner)
+Isaías’s Masters thesis
+BibTeX | PDF | PDF (Mirror)  2018  ADeLe: Rapid Architectural Simulation for Approximate Hardware
 Isaías B. Felzmann, Matheus M. Susin, Liana Duenha, Rodolfo Azevedo and Lucas Wanner
-30th International Symposium on Computer Architecture and High Performance Computing &amp;ndash; SBAC-PAD 2018
-More information | BibTeX | PDF (soon) | Proceedings (soon)
- Impacto de memórias aproximadas na eficiência energética (In Portuguese)
-Isaías B. Felzmann, João Fabrício Filho, Rodolfo Azevedo and Lucas Wanner</description>
+30th International Symposium on Computer Architecture and High Performance Computing &amp;ndash; SBAC-PAD 2018</description>
     </item>
     
   </channel>
