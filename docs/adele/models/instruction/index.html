@@ -178,16 +178,32 @@ The example below used bitwise operations to truncate the data while maintaining
 This is a C++ structure of the form:</p>
 
 <pre><code class="language-C++">struct source_t {
-  
+  typedef enum {MEM, REGBANK, REG} type_t;
+  typedef enum {READ, WRITE} op_t;
+  type_t type;
+  const std::string&amp; name;
+  uint32_t address;
+  op_t op;
+  size_t width;
 };
 </code></pre>
 
-<p>The source structure is intended to be used as a filter for data modifiers.
-For example, if one needs to isolate the first thousand words on memory to apply some modifier, it could be implemented like that:</p>
+<p>Where <em>type</em> indicates whether the data resides in memory (<em>MEM</em>), in a register bank (<em>REGBANK</em>), or in an individual register (<em>REG</em>); <em>name</em> stores the user-defined name of the storage unit (some common names are &ldquo;RB&rdquo; for a register bank, &ldquo;RBF&rdquo; for floating-point registers, and &ldquo;MEM&rdquo; for the default memory port); <em>address</em> contains the location being accessed in the storage unit, which is the memory address or register number (individual registers do not use this field); <em>op</em> indicates the operation being performed (read or write); and <em>width</em> contains the data word width, in bytes.</p>
 
-<pre><code class="language-C++">DM MemoryIsolation(source_t source, uint64_t&amp; data) {
-  if (source.address &lt; 1000) {
-    // Implement modification
+<p>The source structure is intended provide additional information on the data handling operation.
+For example, the following code snippet randomly flips one single bit when reading from the memory device called &ldquo;MEM&rdquo;.
+Supposing that the modeled architecture implements an &ldquo;upside-down&rdquo; stack and stores the stack pointer in register $2 of a register bank called &ldquo;RB&rdquo;, such as MIPS, this modifier isolates the stack from any approximation.
+Moreover, it uses the information of width to select a random bit from the data regardless of its length.</p>
+
+<pre><code class="language-C++">DM RandomBitFlip(source_t source, uint64_t&amp; data) {
+  if (
+    source.type == source_t::MEM &amp;&amp;
+    source.name == &quot;MEM&quot; &amp;&amp;
+    source.address &lt; RB[2] &amp;&amp; // Stack pointer
+    source.op == source_t::READ
+  ) {
+    unsigned int bit = rand() % (source.width * 8);
+    data ^= (0x1ULL &lt;&lt; bit);
   }
 }
 </code></pre>

@@ -191,12 +191,13 @@ In the meantime, you may be interested in the ADeLe design overview or in a desc
       <pubDate>Sat, 18 May 2019 11:07:00 -0300</pubDate>
       
       <guid>/publications/</guid>
-      <description>Publications from our group 2019  A framework for modeling and simulation of approximate computing in hardware
+      <description>Publications from our group 2020  ADeLe: A description language for approximate hardware
+Isaías B. Felzmann, Matheus M. Susin, Liana Duenha, Rodolfo Azevedo and Lucas Wanner
+Future Generation Computer Systems, volume 102, pp 245-258
+BibTeX | PDF | DOI  2019  A framework for modeling and simulation of approximate computing in hardware
 Isaías B. Felzmann (supervised by Prof. Dr. Lucas Wanner)
 Isaías’s Masters thesis
-BibTeX | PDF | PDF (Mirror)  2018  ADeLe: Rapid Architectural Simulation for Approximate Hardware
-Isaías B. Felzmann, Matheus M. Susin, Liana Duenha, Rodolfo Azevedo and Lucas Wanner
-30th International Symposium on Computer Architecture and High Performance Computing &amp;ndash; SBAC-PAD 2018</description>
+BibTeX | PDF | PDF (Mirror)  2018  ADeLe: Rapid Architectural Simulation for Approximate Hardware</description>
     </item>
     
   </channel>
