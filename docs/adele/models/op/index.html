@@ -13,7 +13,7 @@
   gtag('config', 'UA-123143777-1');
   </script>
   
-  <meta name="generator" content="Hugo 0.48" />
+  <meta name="generator" content="Hugo 0.40.1" />
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -32,11 +32,27 @@
 
 
   <meta property="og:title" content="The Operating Parameters" />
-<meta property="og:description" content="Whoops! We are sorry this documentation page is not ready yet.
-In the meantime, you may be interested in the ADeLe design overview or in a description example of a CPU Model." />
+<meta property="og:description" content="The Operating Parameters are a global data structure that encode parameters of the target simulated CPU. They are defined in dictionary-like sets containing double-precision floating-point values representing, for example, physical conditions of the target hardware such as voltage or frequency, simulation-specific values such as a per-instruction energy increment or fixed error probabilities, or any other pre-defined numeric value.
+Operating parameters may be implemented as default values for the whole system, as initial values for specific groups of instructions, or as values activated dinamically according to the approximate state of the target CPU." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/docs/adele/models/op/" /><meta property="article:published_time" content="2018-09-22T13:13:00-03:00"/>
-<meta property="article:modified_time" content="2018-09-22T13:13:00-03:00"/>
+<meta property="og:url" content="/docs/adele/models/op/" />
+
+
+
+<meta property="article:published_time" content="2019-10-31T13:43:00-03:00"/>
+
+<meta property="article:modified_time" content="2019-10-31T13:43:00-03:00"/>
+
+
+
+
+
+
+
+
+
+
+
   
 
 
@@ -113,11 +129,100 @@ In the meantime, you may be interested in the ADeLe design overview or in a desc
     <div id="kube-component" class="content">
         
 
-<h1 id="whoops">Whoops!</h1>
+<p>The Operating Parameters are a global data structure that encode parameters of the target simulated CPU.
+They are defined in dictionary-like sets containing double-precision floating-point values representing, for example, physical conditions of the target hardware such as voltage or frequency, simulation-specific values such as a per-instruction energy increment or fixed error probabilities, or any other pre-defined numeric value.</p>
 
-<p>We are sorry this documentation page is not ready yet.</p>
+<p>Operating parameters may be implemented as default values for the whole system, as initial values for specific groups of instructions, or as values activated dinamically according to the approximate state of the target CPU.</p>
 
-<p>In the meantime, you may be interested in <a href="/docs/adele/overview">the ADeLe design overview</a> or in a <a href="https://github.com/VArchC/MIPS32r2">description example of a CPU Model</a>.</p>
+<h3 id="defining-operating-parameters">Defining Operating Parameters</h3>
+
+<p>The code snippet below demonstrates de definition of three sets of operating parameters in the <a href="/doc/adele/adf/">ADeLe Description File</a>.</p>
+
+<pre><code class="language-C++">OP set_A = {
+  voltage   = 1.0,
+  frequency = 400.0,
+  scaling   = 1.0
+};
+
+OP set_B = {
+  voltage   = 1.0,
+  frequency = 400.0,
+  scaling   = 1.5
+};
+
+OP set_C = {
+  voltage   = 0.8
+};
+
+OP set_D = {
+  scaling = 0.5
+};
+</code></pre>
+
+<p>Each set of operating parameters is available according to the <a href="/docs/adele/models/approximation">approximate state</a> of the target CPU, and they complement each other.
+In the example above, the first two sets, <em>set_A</em> and <em>set_B</em>, define three values: operating voltage, operating frequency, and an energy scaling factor.
+The other two sets, <em>set_C</em> and <em>set_D</em>, however, define just one value for, respectively, voltage and scaling.
+Thus, if a given time, the current set of operating parameters is <em>set_A</em> and the activation of an approximation demands <em>set_C</em>, than just the voltage value will be overwritten (from 1.0 to 0.8), while frequency and scaling would be maintained.
+Similarly, if the current set is <em>set_A</em> and an recently activated approximation requires <em>set_B</em>, then all three values would be overwritten.</p>
+
+<h3 id="implementing-default-operating-parameters">Implementing default Operating Parameters</h3>
+
+<p>The default set of Operating Parameters is the one available to every single instruction at system startup and the one used whenever no other set is available.
+To define the default set of Operating Parameters, just attribute it to the <em>parameters</em> control in the <a href="/doc/adele/adf/">ADeLe Description File</a>, outside any <a href="/docs/adele/models/approximation">approximation</a> or <a href="/docs/adele/models/group/">group</a>.</p>
+
+<pre><code class="language-C++">parameters = set_A;
+</code></pre>
+
+<h3 id="implementing-operating-parameters-for-groups-of-instructions">Implementing Operating Parameters for groups of instructions</h3>
+
+<p>Sets of Operating Parameters may also be implemented for arbitrary <a href="/docs/adele/models/group">groups of instructions</a>.
+This allows that different instructions are initialized with different sets of parameters, that are used whenever no other configuration is explicitly set within an <a href="/docs/adele/models/approximation">approximation</a>.</p>
+
+<p>In the code snippet below, a group of instructions <em>VECTOR</em>, containing vector multiplication and division, uses more energy than the average of other instructions.
+Thus, to proper compute the energy cost of an execution, the scaling factor defined within Operating Parameters is higher for this group.</p>
+
+<pre><code class="language-C++">OP set_A = {
+  voltage   = 1.0,
+  frequency = 400.0,
+  scaling   = 1.0
+};
+
+OP set_B = {
+  voltage   = 1.0,
+  frequency = 400.0,
+  scaling   = 1.5
+};
+
+parameters = set_A;
+
+group VECTOR {
+  instruction = {mul.v, div.v};
+  parameters = set_B;
+}
+</code></pre>
+
+<h3 id="implementing-operating-parameters-for-approximations">Implementing Operating Parameters for approximations</h3>
+
+<p>Implementing different Operating Parameters for approximations allows that different values are seen depending on the approximation state of the target CPU.</p>
+
+<pre><code class="language-C++">approximation LOW_VDD_1 {
+  parameters = set_C;
+}
+
+approximation LOW_VDD_2 {
+  parameters = set_D;
+}
+</code></pre>
+
+<h3 id="accessing-operating-parameters-from-software-models">Accessing Operating Parameters from software models</h3>
+
+<p>Any Operating Parameter available at a given simulation time can be accessed by any of the <a href="/docs/adele/models/instruction">instruction</a>, <a href="/docs/adele/models/energy">energy</a>, or <a href="/docs/adele/models/probability">probability</a> models by fetching the <em>OP</em> array, using the parameter name as the index.
+In the example code snippet below, the energy model <em>simple_em</em> uses the voltage, frequency, and scaling parameters to predict the average energy per instruction of the target - in the example, the function <em>math_energy</em> abstracts the mathematical energy model.</p>
+
+<pre><code class="language-C++">EM simple_em() {
+  return OP[&quot;scaling&quot;] * math_energy(OP[&quot;voltage&quot;], OP[&quot;frequency&quot;]);
+}
+</code></pre>
 
         <hr />
         <h2> More documentation </h2>
@@ -153,10 +258,31 @@ In the meantime, you may be interested in the ADeLe design overview or in a desc
   
   <li>
     
+      <a href="/docs/adele/adf/">The ADeLe Description File</a>
+    
+    
+  </li>
+  
+  <li>
+    
       <a href="/docs/adele/models/">Models and Abstractions</a>
     
     
     <ol>
+  
+  <li>
+    
+      <a href="/docs/adele/models/group/">The Group Abstraction</a>
+    
+    
+  </li>
+  
+  <li>
+    
+      <a href="/docs/adele/models/approximation/">The Approximation Abstraction</a>
+    
+    
+  </li>
   
   <li>
     
@@ -193,29 +319,8 @@ In the meantime, you may be interested in the ADeLe design overview or in a desc
     
   </li>
   
-  <li>
-    
-      <a href="/docs/adele/models/group/">The Group Abstraction</a>
-    
-    
-  </li>
-  
-  <li>
-    
-      <a href="/docs/adele/models/approximation/">The Approximation Abstraction</a>
-    
-    
-  </li>
-  
 </ol>
 
-    
-  </li>
-  
-  <li>
-    
-      <a href="/docs/adele/adf/">The ADeLe Description File</a>
-    
     
   </li>
   

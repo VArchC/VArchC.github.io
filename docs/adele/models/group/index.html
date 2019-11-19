@@ -13,7 +13,7 @@
   gtag('config', 'UA-123143777-1');
   </script>
   
-  <meta name="generator" content="Hugo 0.48" />
+  <meta name="generator" content="Hugo 0.40.1" />
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -32,11 +32,28 @@
 
 
   <meta property="og:title" content="The Group Abstraction" />
-<meta property="og:description" content="Whoops! We are sorry this documentation page is not ready yet.
-In the meantime, you may be interested in the ADeLe design overview or in a description example of a CPU Model." />
+<meta property="og:description" content="The Group abstraction allows distinct instructions to be grouped together arbitrarily in one single entity. This entity can be used to define approximations, energy models, and operating parameters at once, with no need to rewrite the definition of the group.
+The code snippet bellow exemplifies the definition of the group ALU, that contains some basic logic and arithmetic instructions.
+group ALU { instruction = { add, addu, sub, subu, and, and, or, not }; }  Additionally to defining the specific instructions that are part of a group, the group abstraction also allows that these instructions are subject to different energy models and operating parameters." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/docs/adele/models/group/" /><meta property="article:published_time" content="2018-09-20T11:11:00-03:00"/>
-<meta property="article:modified_time" content="2018-09-20T11:11:00-03:00"/>
+<meta property="og:url" content="/docs/adele/models/group/" />
+
+
+
+<meta property="article:published_time" content="2019-11-09T12:18:00-03:00"/>
+
+<meta property="article:modified_time" content="2019-11-09T12:18:00-03:00"/>
+
+
+
+
+
+
+
+
+
+
+
   
 
 
@@ -111,13 +128,36 @@ In the meantime, you may be interested in the ADeLe design overview or in a desc
       <h2> The Group Abstraction </h2>
     </div> 
     <div id="kube-component" class="content">
-        
+        <p>The <em>Group</em> abstraction allows distinct instructions to be grouped together arbitrarily in one single entity.
+This entity can be used to define <a href="/docs/adele/models/approximation/">approximations</a>, <a href="/docs/adele/models/energy/">energy models</a>, and <a href="/docs/adele/models/op/">operating parameters</a> at once, with no need to rewrite the definition of the group.</p>
 
-<h1 id="whoops">Whoops!</h1>
+<p>The code snippet bellow exemplifies the definition of the group ALU, that contains some basic logic and arithmetic instructions.</p>
 
-<p>We are sorry this documentation page is not ready yet.</p>
+<pre><code class="language-C++">group ALU {
+  instruction = {
+    add, addu,
+    sub, subu,
+    and, and,
+    or,
+    not
+  };
+}
+</code></pre>
 
-<p>In the meantime, you may be interested in <a href="/docs/adele/overview">the ADeLe design overview</a> or in a <a href="https://github.com/VArchC/MIPS32r2">description example of a CPU Model</a>.</p>
+<p>Additionally to defining the specific instructions that are part of a group, the group abstraction also allows that these instructions are subject to different <a href="/docs/adele/models/energy/">energy models</a> and <a href="/docs/adele/models/op/">operating parameters</a>.</p>
+
+<pre><code class="language-C++">group ALU {
+  instruction = {
+    add, addu,
+    sub, subu,
+    and, and,
+    or,
+    not
+  };
+  energy     = alu_em();
+  parameters = alu_op;
+}
+</code></pre>
 
         <hr />
         <h2> More documentation </h2>
@@ -153,10 +193,31 @@ In the meantime, you may be interested in the ADeLe design overview or in a desc
   
   <li>
     
+      <a href="/docs/adele/adf/">The ADeLe Description File</a>
+    
+    
+  </li>
+  
+  <li>
+    
       <a href="/docs/adele/models/">Models and Abstractions</a>
     
     
     <ol>
+  
+  <li>
+    
+      <a href="/docs/adele/models/group/">The Group Abstraction</a>
+    
+    
+  </li>
+  
+  <li>
+    
+      <a href="/docs/adele/models/approximation/">The Approximation Abstraction</a>
+    
+    
+  </li>
   
   <li>
     
@@ -193,29 +254,8 @@ In the meantime, you may be interested in the ADeLe design overview or in a desc
     
   </li>
   
-  <li>
-    
-      <a href="/docs/adele/models/group/">The Group Abstraction</a>
-    
-    
-  </li>
-  
-  <li>
-    
-      <a href="/docs/adele/models/approximation/">The Approximation Abstraction</a>
-    
-    
-  </li>
-  
 </ol>
 
-    
-  </li>
-  
-  <li>
-    
-      <a href="/docs/adele/adf/">The ADeLe Description File</a>
-    
     
   </li>
   

@@ -13,7 +13,7 @@
   gtag('config', 'UA-123143777-1');
   </script>
   
-  <meta name="generator" content="Hugo 0.48" />
+  <meta name="generator" content="Hugo 0.40.1" />
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -37,7 +37,20 @@
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="/docs/adele/models/" />
-<meta property="og:updated_time" content="2018-09-20T11:08:00-03:00"/>
+
+
+
+<meta property="og:updated_time" content="2019-11-11T13:09:00-03:00"/>
+
+
+
+
+
+
+
+
+
+
   
 
 
@@ -121,6 +134,20 @@
 <p>Approximations in VArchC are described using the ADeLe language according to models and abstractions. These formally represent the behavioral aspects of each approximation in an architectural level.
 In VArchC, all models are C++ structures.</p>
 
+<h3 id="groups-docs-adele-models-group"><a href="/docs/adele/models/group/">Groups</a></h3>
+
+<p>Groups are used to group similar instructions together and define some models to all instructions in the group.
+Thus, for example, if a large number of instructions are affected by different approximations, a group may be conveniently define containing these instructions.</p>
+
+<p>See <a href="/docs/adele/models/group/">The Group Abstraction</a> for more information and examples on how to declare groups.</p>
+
+<h3 id="approximations-docs-adele-models-approximation"><a href="/docs/adele/models/approximation">Approximations</a></h3>
+
+<p>Approximations are abstractions of an approximated state in the target architecture.
+When an approximation is activated, all the models associated with it are used to model the behavior of instructions.</p>
+
+<p>See <a href="/docs/adele/models/approximation/">The Approximation Abstraction</a> for more information and examples on how to declare approximations.</p>
+
 <h3 id="word-docs-adele-models-word"><a href="/docs/adele/models/word">Word</a></h3>
 
 <p>Words are the primary data abstraction within ADeLe.
@@ -165,20 +192,6 @@ They can represent, for example, physical parameters of the target architecture.
 
 <p>See <a href="/docs/adele/models/op/">Operating Parameters</a> for more information and operating parameters examples.</p>
 
-<h3 id="groups-docs-adele-models-group"><a href="/docs/adele/models/group/">Groups</a></h3>
-
-<p>Groups are used to group similar instructions together and define some models to all instructions in the group.
-Thus, for example, if a large number of instructions are affected by different approximations, a group may be conveniently define containing these instructions.</p>
-
-<p>See <a href="/docs/adele/models/group/">The Group Abstraction</a> for more information and examples on how to declare groups.</p>
-
-<h3 id="approximations-docs-adele-models-approximation"><a href="/docs/adele/models/approximation">Approximations</a></h3>
-
-<p>Approximations are abstractions of an approximated state in the target architecture.
-When an approximation is activated, all the models associated with it are used to model the behavior of instructions.</p>
-
-<p>See <a href="/docs/adele/models/approximation/">The Approximation Abstraction</a> for more information and examples on how to declare approximations.</p>
-
         <hr />
         <h2> More documentation </h2>
         
@@ -214,10 +227,31 @@ When an approximation is activated, all the models associated with it are used t
   
   <li>
     
+      <a href="/docs/adele/adf/">The ADeLe Description File</a>
+    
+    
+  </li>
+  
+  <li>
+    
       <a href="/docs/adele/models/">Models and Abstractions</a>
     
     
     <ol>
+  
+  <li>
+    
+      <a href="/docs/adele/models/group/">The Group Abstraction</a>
+    
+    
+  </li>
+  
+  <li>
+    
+      <a href="/docs/adele/models/approximation/">The Approximation Abstraction</a>
+    
+    
+  </li>
   
   <li>
     
@@ -254,29 +288,8 @@ When an approximation is activated, all the models associated with it are used t
     
   </li>
   
-  <li>
-    
-      <a href="/docs/adele/models/group/">The Group Abstraction</a>
-    
-    
-  </li>
-  
-  <li>
-    
-      <a href="/docs/adele/models/approximation/">The Approximation Abstraction</a>
-    
-    
-  </li>
-  
 </ol>
 
-    
-  </li>
-  
-  <li>
-    
-      <a href="/docs/adele/adf/">The ADeLe Description File</a>
-    
     
   </li>
   

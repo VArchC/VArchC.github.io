@@ -6,10 +6,20 @@
     <description>Recent content in Blogs on VArchC</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 20 Sep 2018 13:37:00 -0300</lastBuildDate>
+    <lastBuildDate>Wed, 13 Nov 2019 13:59:00 -0300</lastBuildDate>
     
 	<atom:link href="/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>AxRAM @ SBAC-PAD 2019</title>
+      <link>/blog/sbesc2019/</link>
+      <pubDate>Wed, 13 Nov 2019 13:59:00 -0300</pubDate>
+      
+      <guid>/blog/sbesc2019/</guid>
+      <description>In 21 November 2019 we presented our first paper presenting the AxRAM data access interface for approximate memories, in our paper A Resilient Interface for Approximate Data Access.
+Abstract Approximate memories offer lower energy cost while introducing errors to applications. If such errors affect essential parts of the application, the execution may fail, decreasing out- puts quality and energy savings. We present AxRAM, a memory architecture interface for approximate data that allows applica- tions to benefit from energy savings provided by approximate memories, while improving quality of results and failure rates.</description>
+    </item>
     
     <item>
       <title>VArchC @ WSCAD 2018</title>

@@ -6,10 +6,21 @@
     <description>Recent content on VArchC</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 15 Sep 2018 10:41:40 -0300</lastBuildDate>
+    <lastBuildDate>Sat, 09 Nov 2019 12:18:00 -0300</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>The Group Abstraction</title>
+      <link>/docs/adele/models/group/</link>
+      <pubDate>Sat, 09 Nov 2019 12:18:00 -0300</pubDate>
+      
+      <guid>/docs/adele/models/group/</guid>
+      <description>The Group abstraction allows distinct instructions to be grouped together arbitrarily in one single entity. This entity can be used to define approximations, energy models, and operating parameters at once, with no need to rewrite the definition of the group.
+The code snippet bellow exemplifies the definition of the group ALU, that contains some basic logic and arithmetic instructions.
+group ALU { instruction = { add, addu, sub, subu, and, and, or, not }; }  Additionally to defining the specific instructions that are part of a group, the group abstraction also allows that these instructions are subject to different energy models and operating parameters.</description>
+    </item>
     
     <item>
       <title>Introduction to VArchC</title>
@@ -21,13 +32,24 @@
     </item>
     
     <item>
+      <title>The Approximation Abstraction</title>
+      <link>/docs/adele/models/approximation/</link>
+      <pubDate>Thu, 20 Sep 2018 11:12:00 -0300</pubDate>
+      
+      <guid>/docs/adele/models/approximation/</guid>
+      <description>The Approximation abstraction describes an approximate state of the simulated CPU, and what is the expected behavior of instructions and memory operations when the execution activates this state.
+The code snippet below describes an example approximation STATE_A.
+approximation STATE_A { initial = on; pre_behavior = TraceState(&amp;quot;A&amp;quot;); instruction mult { parameters = set_C; alt_behavior = ApproxMult(RB[rd], RB[rs], RB[rt]); }; group VECTOR { parameters = set_D; regbank_write = RandomFlip(); probability = VectorProbability(); }; }  This description is interpreted as, in the order that the declarations are written:</description>
+    </item>
+    
+    <item>
       <title>The Word Abstraction</title>
       <link>/docs/adele/models/word/</link>
-      <pubDate>Thu, 20 Sep 2018 11:09:00 -0300</pubDate>
+      <pubDate>Tue, 29 Oct 2019 12:19:20 -0300</pubDate>
       
       <guid>/docs/adele/models/word/</guid>
-      <description>Whoops! We are sorry this documentation page is not ready yet.
-In the meantime, you may be interested in the ADeLe design overview or in a description example of a CPU Model.</description>
+      <description>The word abstraction represents every data or address word within a target architecture. That means, in a 32-bit CPU model the word data type will map to a 32-bit value, while in a 64-bit architecture it will map to a 64-bit value.
+The word abstraction allows Instruction models to be independent of data word length in a target architecture, since they can deal with parameters of type word. More than that, the word abstraction also implements overloaded operators for read and write operations, so that the appropriate Data Modifiers are applied.</description>
     </item>
     
     <item>
@@ -77,6 +99,16 @@ The complexity of an energy model depends on the required accuracy of energy com
     </item>
     
     <item>
+      <title>The ADeLe Description File</title>
+      <link>/docs/adele/adf/</link>
+      <pubDate>Thu, 20 Sep 2018 11:07:00 -0300</pubDate>
+      
+      <guid>/docs/adele/adf/</guid>
+      <description>Whoops! We are sorry this documentation page is not ready yet.
+In the meantime, you may be interested in the ADeLe design overview, in a description example of a CPU Model, or in a more complete example.</description>
+    </item>
+    
+    <item>
       <title>Generating a simulator</title>
       <link>/docs/simulator/</link>
       <pubDate>Thu, 20 Sep 2018 12:18:00 -0300</pubDate>
@@ -97,23 +129,23 @@ Probability models are used mostly with probabilistic approximations. For exampl
     </item>
     
     <item>
-      <title>The ADeLe Description File</title>
-      <link>/docs/adele/adf/</link>
-      <pubDate>Thu, 20 Sep 2018 11:07:00 -0300</pubDate>
+      <title>The Operating Parameters</title>
+      <link>/docs/adele/models/op/</link>
+      <pubDate>Thu, 31 Oct 2019 13:43:00 -0300</pubDate>
       
-      <guid>/docs/adele/adf/</guid>
-      <description>Whoops! We are sorry this documentation page is not ready yet.
-In the meantime, you may be interested in the ADeLe design overview, in a description example of a CPU Model, or in a more complete example.</description>
+      <guid>/docs/adele/models/op/</guid>
+      <description>The Operating Parameters are a global data structure that encode parameters of the target simulated CPU. They are defined in dictionary-like sets containing double-precision floating-point values representing, for example, physical conditions of the target hardware such as voltage or frequency, simulation-specific values such as a per-instruction energy increment or fixed error probabilities, or any other pre-defined numeric value.
+Operating parameters may be implemented as default values for the whole system, as initial values for specific groups of instructions, or as values activated dinamically according to the approximate state of the target CPU.</description>
     </item>
     
     <item>
-      <title>The Operating Parameters</title>
-      <link>/docs/adele/models/op/</link>
-      <pubDate>Sat, 22 Sep 2018 13:13:00 -0300</pubDate>
+      <title>AxRAM @ SBAC-PAD 2019</title>
+      <link>/blog/sbesc2019/</link>
+      <pubDate>Wed, 13 Nov 2019 13:59:00 -0300</pubDate>
       
-      <guid>/docs/adele/models/op/</guid>
-      <description>Whoops! We are sorry this documentation page is not ready yet.
-In the meantime, you may be interested in the ADeLe design overview or in a description example of a CPU Model.</description>
+      <guid>/blog/sbesc2019/</guid>
+      <description>In 21 November 2019 we presented our first paper presenting the AxRAM data access interface for approximate memories, in our paper A Resilient Interface for Approximate Data Access.
+Abstract Approximate memories offer lower energy cost while introducing errors to applications. If such errors affect essential parts of the application, the execution may fail, decreasing out- puts quality and energy savings. We present AxRAM, a memory architecture interface for approximate data that allows applica- tions to benefit from energy savings provided by approximate memories, while improving quality of results and failure rates.</description>
     </item>
     
     <item>
@@ -156,16 +188,6 @@ In the meantime, you may be interested in an example of a test application.</des
     </item>
     
     <item>
-      <title>The Group Abstraction</title>
-      <link>/docs/adele/models/group/</link>
-      <pubDate>Thu, 20 Sep 2018 11:11:00 -0300</pubDate>
-      
-      <guid>/docs/adele/models/group/</guid>
-      <description>Whoops! We are sorry this documentation page is not ready yet.
-In the meantime, you may be interested in the ADeLe design overview or in a description example of a CPU Model.</description>
-    </item>
-    
-    <item>
       <title>Collecting energy statistics</title>
       <link>/docs/output/</link>
       <pubDate>Thu, 20 Sep 2018 12:27:00 -0300</pubDate>
@@ -173,16 +195,6 @@ In the meantime, you may be interested in the ADeLe design overview or in a desc
       <guid>/docs/output/</guid>
       <description>Whoops! We are sorry this documentation page is not ready yet.
 In the meantime, you may be interested in an example of a test application.</description>
-    </item>
-    
-    <item>
-      <title>The Approximation Abstraction</title>
-      <link>/docs/adele/models/approximation/</link>
-      <pubDate>Thu, 20 Sep 2018 11:12:00 -0300</pubDate>
-      
-      <guid>/docs/adele/models/approximation/</guid>
-      <description>Whoops! We are sorry this documentation page is not ready yet.
-In the meantime, you may be interested in the ADeLe design overview or in a description example of a CPU Model.</description>
     </item>
     
     <item>
@@ -194,10 +206,9 @@ In the meantime, you may be interested in the ADeLe design overview or in a desc
       <description>Publications from our group 2020  ADeLe: A description language for approximate hardware
 Isaías B. Felzmann, Matheus M. Susin, Liana Duenha, Rodolfo Azevedo and Lucas Wanner
 Future Generation Computer Systems, volume 102, pp 245-258
-BibTeX | PDF | DOI  2019  A framework for modeling and simulation of approximate computing in hardware
-Isaías B. Felzmann (supervised by Prof. Dr. Lucas Wanner)
-Isaías’s Masters thesis
-BibTeX | PDF | PDF (Mirror)  2018  ADeLe: Rapid Architectural Simulation for Approximate Hardware</description>
+BibTeX | PDF | DOI  2019  A Resilient Interface for Approximate Data Access
+João Fabrício Filho, Isaías B. Felzmann, Rodolfo Azevedo and Lucas F. Wanner
+IX Brazilian Symposium on Computing Systems Engineering &amp;ndash; SBESC 2019</description>
     </item>
     
   </channel>

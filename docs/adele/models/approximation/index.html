@@ -13,7 +13,7 @@
   gtag('config', 'UA-123143777-1');
   </script>
   
-  <meta name="generator" content="Hugo 0.48" />
+  <meta name="generator" content="Hugo 0.40.1" />
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -32,11 +32,28 @@
 
 
   <meta property="og:title" content="The Approximation Abstraction" />
-<meta property="og:description" content="Whoops! We are sorry this documentation page is not ready yet.
-In the meantime, you may be interested in the ADeLe design overview or in a description example of a CPU Model." />
+<meta property="og:description" content="The Approximation abstraction describes an approximate state of the simulated CPU, and what is the expected behavior of instructions and memory operations when the execution activates this state.
+The code snippet below describes an example approximation STATE_A.
+approximation STATE_A { initial = on; pre_behavior = TraceState(&quot;A&quot;); instruction mult { parameters = set_C; alt_behavior = ApproxMult(RB[rd], RB[rs], RB[rt]); }; group VECTOR { parameters = set_D; regbank_write = RandomFlip(); probability = VectorProbability(); }; }  This description is interpreted as, in the order that the declarations are written:" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/docs/adele/models/approximation/" /><meta property="article:published_time" content="2018-09-20T11:12:00-03:00"/>
+<meta property="og:url" content="/docs/adele/models/approximation/" />
+
+
+
+<meta property="article:published_time" content="2018-09-20T11:12:00-03:00"/>
+
 <meta property="article:modified_time" content="2018-09-20T11:12:00-03:00"/>
+
+
+
+
+
+
+
+
+
+
+
   
 
 
@@ -113,11 +130,76 @@ In the meantime, you may be interested in the ADeLe design overview or in a desc
     <div id="kube-component" class="content">
         
 
-<h1 id="whoops">Whoops!</h1>
+<p>The <em>Approximation</em> abstraction describes an approximate state of the simulated CPU, and what is the expected behavior of instructions and memory operations when the execution activates this state.</p>
 
-<p>We are sorry this documentation page is not ready yet.</p>
+<p>The code snippet below describes an example approximation <em>STATE_A</em>.</p>
 
-<p>In the meantime, you may be interested in <a href="/docs/adele/overview">the ADeLe design overview</a> or in a <a href="https://github.com/VArchC/MIPS32r2">description example of a CPU Model</a>.</p>
+<pre><code class="language-C++">approximation STATE_A {
+  initial = on;
+
+  pre_behavior    = TraceState(&quot;A&quot;);
+
+  instruction mult {
+    parameters    = set_C;
+    alt_behavior  = ApproxMult(RB[rd], RB[rs], RB[rt]);
+  };
+
+  group VECTOR {
+    parameters    = set_D;
+    regbank_write = RandomFlip();
+    probability   = VectorProbability();
+  };
+}
+</code></pre>
+
+<p>This description is interpreted as, in the order that the declarations are written:</p>
+
+<ol>
+<li>At simulation startup, this approximation is active.</li>
+<li>For every instrution fetched while this approximation is active, the user-defined method <em>TraceState()</em> is called before execution, with a string parameter <em>&ldquo;A&rdquo;</em> (see <a href="/docs/adele/models/instruction#implementation-modifiers">Implementation modifiers</a>).</li>
+<li>The instruction <em>mult</em> has some specific configuration:<br />
+3.1. The set of operating parameters <em>set_C</em> has to be used (see <a href="/docs/adele/models/op">Operating Parameters</a>).<br />
+3.2. The execution main behavior has to be replaced with the user-defined method <em>ApproxMult()</em> with parameters <em>RB[rd]</em>, <em>RB[rs]</em> and <em>RB[rt]</em>, where each parameter is derived from data structures specified by the CPU model (see <a href="/docs/adele/models/instruction#implementation-modifiers">Implementation modifiers</a>).</li>
+<li>The group of instructions <em>VECTOR</em> has some specific configuration (see <a href="/docs/adele/models/group/">The Group Abstraction</a>):<br />
+4.1. The set of operating parameters <em>set_D</em> has to be used (see <a href="/docs/adele/models/op">Operating Parameters</a>).<br />
+4.2. Every time a register from a register bank is written, the user-defined method <em>RandomFlip()</em> may be called (see <a href="/docs/adele/models/instruction#data-modifiers">Data modifiers</a>).<br />
+4.2.1. <em>RandomFlip()</em> has to be called only if the user-defined method <em>VectorProbability()</em> returns <em>TRUE</em> (see <a href="/docs/adele/models/probability/">The Probability Model</a>).</li>
+</ol>
+
+<p>See below a detailed description of each featured declaration.</p>
+
+<h3 id="initial-state-of-approximation">Initial state of approximation</h3>
+
+<p>The keyword <em>initial</em> indicates the initial state of the approximation.
+If <em>initial = on</em>, then the approximation will be active and their results modeled since application startup.
+If <em>initial = off</em>, it will be inactive.
+Regardless of the initial state, any approximation can be control at runtime using the <a href="/docs/app#the-control-interface">control interface</a>.</p>
+
+<h3 id="instantiating-implementation-modifiers">Instantiating implementation modifiers</h3>
+
+<p><a href="/docs/adele/models/instruction#implementation-modifiers">Implementation modifiers</a> are methods that modify the simulated behavior of instructions.
+Upon instantiation, these can be applied at 3 distinct moments of the instruction execution: <em>before</em>, <em>after</em> or <em>replacing</em> the original behavior.</p>
+
+<ul>
+<li>The keyword <em>pre_behavior</em> inserts the model implementation <em>before</em> the instruction behavior.<br /></li>
+<li>The keyword <em>post_behavior</em> inserts the model implementation <em>after</em> the instruction behavior.<br /></li>
+<li>The keyword <em>alt_behavior</em> <em>replaces</em> the instruction behavior by the model implementation.<br /></li>
+</ul>
+
+<h3 id="instantiating-data-modifiers">Instantiating data modifiers</h3>
+
+<p><a href="/docs/adele/models/instruction#data-modifiers">Data modifiers</a> are methods that modify the data read from or written to by an instruction.
+Data modifiers are applied to designated operations on storage elements of the simulated hardware.
+The following ADeLe keywords define the operation and storage element in which the data modifiers are applied:</p>
+
+<ul>
+<li><em>mem_read</em> - read operations on (main) memory;<br /></li>
+<li><em>mem_write</em> - write operations on (main) memory;<br /></li>
+<li><em>regbank_read</em> - read operations on a register bank;<br /></li>
+<li><em>regbank_write</em> - write operations on a register bank;<br /></li>
+<li><em>reg_read</em> - read operations on a (special) register;<br /></li>
+<li><em>reg_write</em> - write operations on a (special) register.<br /></li>
+</ul>
 
         <hr />
         <h2> More documentation </h2>
@@ -153,10 +235,31 @@ In the meantime, you may be interested in the ADeLe design overview or in a desc
   
   <li>
     
+      <a href="/docs/adele/adf/">The ADeLe Description File</a>
+    
+    
+  </li>
+  
+  <li>
+    
       <a href="/docs/adele/models/">Models and Abstractions</a>
     
     
     <ol>
+  
+  <li>
+    
+      <a href="/docs/adele/models/group/">The Group Abstraction</a>
+    
+    
+  </li>
+  
+  <li>
+    
+      <a href="/docs/adele/models/approximation/">The Approximation Abstraction</a>
+    
+    
+  </li>
   
   <li>
     
@@ -193,29 +296,8 @@ In the meantime, you may be interested in the ADeLe design overview or in a desc
     
   </li>
   
-  <li>
-    
-      <a href="/docs/adele/models/group/">The Group Abstraction</a>
-    
-    
-  </li>
-  
-  <li>
-    
-      <a href="/docs/adele/models/approximation/">The Approximation Abstraction</a>
-    
-    
-  </li>
-  
 </ol>
 
-    
-  </li>
-  
-  <li>
-    
-      <a href="/docs/adele/adf/">The ADeLe Description File</a>
-    
     
   </li>
   

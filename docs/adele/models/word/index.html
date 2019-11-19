@@ -13,7 +13,7 @@
   gtag('config', 'UA-123143777-1');
   </script>
   
-  <meta name="generator" content="Hugo 0.48" />
+  <meta name="generator" content="Hugo 0.40.1" />
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -32,11 +32,27 @@
 
 
   <meta property="og:title" content="The Word Abstraction" />
-<meta property="og:description" content="Whoops! We are sorry this documentation page is not ready yet.
-In the meantime, you may be interested in the ADeLe design overview or in a description example of a CPU Model." />
+<meta property="og:description" content="The word abstraction represents every data or address word within a target architecture. That means, in a 32-bit CPU model the word data type will map to a 32-bit value, while in a 64-bit architecture it will map to a 64-bit value.
+The word abstraction allows Instruction models to be independent of data word length in a target architecture, since they can deal with parameters of type word. More than that, the word abstraction also implements overloaded operators for read and write operations, so that the appropriate Data Modifiers are applied." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/docs/adele/models/word/" /><meta property="article:published_time" content="2018-09-20T11:09:00-03:00"/>
-<meta property="article:modified_time" content="2018-09-20T11:09:00-03:00"/>
+<meta property="og:url" content="/docs/adele/models/word/" />
+
+
+
+<meta property="article:published_time" content="2019-10-29T12:19:20-03:00"/>
+
+<meta property="article:modified_time" content="2019-10-29T12:19:20-03:00"/>
+
+
+
+
+
+
+
+
+
+
+
   
 
 
@@ -111,13 +127,25 @@ In the meantime, you may be interested in the ADeLe design overview or in a desc
       <h2> The Word Abstraction </h2>
     </div> 
     <div id="kube-component" class="content">
-        
+        <p>The word abstraction represents every data or address word within a target architecture.
+That means, in a 32-bit CPU model the <em>word</em> data type will map to a 32-bit value, while in a 64-bit architecture it will map to a 64-bit value.</p>
 
-<h1 id="whoops">Whoops!</h1>
+<p>The word abstraction allows <a href="/docs/adele/models/instruction/">Instruction models</a> to be independent of data word length in a target architecture, since they can deal with parameters of type <em>word</em>.
+More than that, the word abstraction also implements overloaded operators for read and write operations, so that the appropriate <a href="/docs/adele/models/instruction/">Data Modifiers</a> are applied.
+These overloaded operators also allow the conversion of <em>word</em> types to regular integer types (e.g. int, unsigned int, uint64_t&hellip;).
+Thus, all ADeLe models can use <em>word</em> types transparently.</p>
 
-<p>We are sorry this documentation page is not ready yet.</p>
+<pre><code class="language-C++">IM BeforeAdd (word a, word b) {
+  add_dump &lt;&lt; static_cast&lt;unsigned int&gt;(a) &lt;&lt; &quot; + &quot; &lt;&lt; static_cast&lt;unsigned int&gt;(b) &lt;&lt; &quot; = &quot;;
+}
 
-<p>In the meantime, you may be interested in <a href="/docs/adele/overview">the ADeLe design overview</a> or in a <a href="https://github.com/VArchC/MIPS32r2">description example of a CPU Model</a>.</p>
+IM AfterAdd (word r) {
+  add_dump &lt;&lt; static_cast&lt;unsigned int&gt;(r) &lt;&lt; std::endl;
+}
+</code></pre>
+
+<p>In the example above, two Instruction models receive and work with <em>word</em> data types.
+<em>Word</em> data types are always passed to methods as reference.</p>
 
         <hr />
         <h2> More documentation </h2>
@@ -153,10 +181,31 @@ In the meantime, you may be interested in the ADeLe design overview or in a desc
   
   <li>
     
+      <a href="/docs/adele/adf/">The ADeLe Description File</a>
+    
+    
+  </li>
+  
+  <li>
+    
       <a href="/docs/adele/models/">Models and Abstractions</a>
     
     
     <ol>
+  
+  <li>
+    
+      <a href="/docs/adele/models/group/">The Group Abstraction</a>
+    
+    
+  </li>
+  
+  <li>
+    
+      <a href="/docs/adele/models/approximation/">The Approximation Abstraction</a>
+    
+    
+  </li>
   
   <li>
     
@@ -193,29 +242,8 @@ In the meantime, you may be interested in the ADeLe design overview or in a desc
     
   </li>
   
-  <li>
-    
-      <a href="/docs/adele/models/group/">The Group Abstraction</a>
-    
-    
-  </li>
-  
-  <li>
-    
-      <a href="/docs/adele/models/approximation/">The Approximation Abstraction</a>
-    
-    
-  </li>
-  
 </ol>
 
-    
-  </li>
-  
-  <li>
-    
-      <a href="/docs/adele/adf/">The ADeLe Description File</a>
-    
     
   </li>
   
