@@ -37,35 +37,5 @@ wget http://www.accellera.org/images/downloads/standards/systemc/systemc-2.3.1.t
 git clone https://github.</description>
     </item>
     
-    <item>
-      <title>Generating a simulator</title>
-      <link>/docs/simulator/</link>
-      <pubDate>Thu, 20 Sep 2018 12:18:00 -0300</pubDate>
-      
-      <guid>/docs/simulator/</guid>
-      <description>Whoops! We are sorry this documentation page is not ready yet.
-In the meantime, you may be interested in a description example of a CPU Model or in a list of the currently supported ArchC models.</description>
-    </item>
-    
-    <item>
-      <title>Running an application</title>
-      <link>/docs/app/</link>
-      <pubDate>Thu, 20 Sep 2018 12:25:00 -0300</pubDate>
-      
-      <guid>/docs/app/</guid>
-      <description>Whoops! We are sorry this documentation page is not ready yet.
-In the meantime, you may be interested in an example of a test application.</description>
-    </item>
-    
-    <item>
-      <title>Collecting energy statistics</title>
-      <link>/docs/output/</link>
-      <pubDate>Thu, 20 Sep 2018 12:27:00 -0300</pubDate>
-      
-      <guid>/docs/output/</guid>
-      <description>Whoops! We are sorry this documentation page is not ready yet.
-In the meantime, you may be interested in an example of a test application.</description>
-    </item>
-    
   </channel>
 </rss>

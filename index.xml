@@ -109,16 +109,6 @@ In the meantime, you may be interested in the ADeLe design overview, in a descri
     </item>
     
     <item>
-      <title>Generating a simulator</title>
-      <link>/docs/simulator/</link>
-      <pubDate>Thu, 20 Sep 2018 12:18:00 -0300</pubDate>
-      
-      <guid>/docs/simulator/</guid>
-      <description>Whoops! We are sorry this documentation page is not ready yet.
-In the meantime, you may be interested in a description example of a CPU Model or in a list of the currently supported ArchC models.</description>
-    </item>
-    
-    <item>
       <title>The Probability Model</title>
       <link>/docs/adele/models/probability/</link>
       <pubDate>Thu, 20 Sep 2018 11:09:00 -0300</pubDate>
@@ -139,13 +129,13 @@ Operating parameters may be implemented as default values for the whole system, 
     </item>
     
     <item>
-      <title>AxRAM @ SBESC 2019</title>
+      <title>AxRAM @ SBAC-PAD 2019</title>
       <link>/blog/sbesc2019/</link>
       <pubDate>Wed, 13 Nov 2019 13:59:00 -0300</pubDate>
       
       <guid>/blog/sbesc2019/</guid>
       <description>In 21 November 2019 we presented our first paper presenting the AxRAM data access interface for approximate memories, in our paper A Resilient Interface for Approximate Data Access.
-Abstract Approximate memories offer lower energy cost while introducing errors to applications. If such errors affect essential parts of the application, the execution may fail, decreasing outputs quality and energy savings. We present AxRAM, a memory architecture interface for approximate data that allows applications to benefit from energy savings provided by approximate memories, while improving quality of results and failure rates.</description>
+Abstract Approximate memories offer lower energy cost while introducing errors to applications. If such errors affect essential parts of the application, the execution may fail, decreasing out- puts quality and energy savings. We present AxRAM, a memory architecture interface for approximate data that allows applica- tions to benefit from energy savings provided by approximate memories, while improving quality of results and failure rates.</description>
     </item>
     
     <item>
@@ -175,26 +165,6 @@ Abstract Recent research has introduced approximate hardware units that produce 
       
       <guid>/blog/first/</guid>
       <description>What is VArchC? VArchC is a framework specially designed to represent computer architectures subjected to Approximate Computing. VArchC works as an extension to the ArchC Architecture Description Language, enabling its tools to automatically generate processor models that implement approximation techniques. Using VArchC, alla designer needs to inject approximations in a target architecture is an ArchC CPU model, specific high-level software models of the desired approximation behaviors, and a high-level configuration file that links them.</description>
-    </item>
-    
-    <item>
-      <title>Running an application</title>
-      <link>/docs/app/</link>
-      <pubDate>Thu, 20 Sep 2018 12:25:00 -0300</pubDate>
-      
-      <guid>/docs/app/</guid>
-      <description>Whoops! We are sorry this documentation page is not ready yet.
-In the meantime, you may be interested in an example of a test application.</description>
-    </item>
-    
-    <item>
-      <title>Collecting energy statistics</title>
-      <link>/docs/output/</link>
-      <pubDate>Thu, 20 Sep 2018 12:27:00 -0300</pubDate>
-      
-      <guid>/docs/output/</guid>
-      <description>Whoops! We are sorry this documentation page is not ready yet.
-In the meantime, you may be interested in an example of a test application.</description>
     </item>
     
     <item>

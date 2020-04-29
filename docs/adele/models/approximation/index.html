@@ -13,7 +13,7 @@
   gtag('config', 'UA-123143777-1');
   </script>
   
-  <meta name="generator" content="Hugo 0.40.1" />
+  <meta name="generator" content="Hugo 0.48" />
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -36,24 +36,8 @@
 The code snippet below describes an example approximation STATE_A.
 approximation STATE_A { initial = on; pre_behavior = TraceState(&quot;A&quot;); instruction mult { parameters = set_C; alt_behavior = ApproxMult(RB[rd], RB[rs], RB[rt]); }; group VECTOR { parameters = set_D; regbank_write = RandomFlip(); probability = VectorProbability(); }; }  This description is interpreted as, in the order that the declarations are written:" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/docs/adele/models/approximation/" />
-
-
-
-<meta property="article:published_time" content="2018-09-20T11:12:00-03:00"/>
-
+<meta property="og:url" content="/docs/adele/models/approximation/" /><meta property="article:published_time" content="2018-09-20T11:12:00-03:00"/>
 <meta property="article:modified_time" content="2018-09-20T11:12:00-03:00"/>
-
-
-
-
-
-
-
-
-
-
-
   
 
 
@@ -166,40 +150,7 @@ approximation STATE_A { initial = on; pre_behavior = TraceState(&quot;A&quot;); 
 4.2.1. <em>RandomFlip()</em> has to be called only if the user-defined method <em>VectorProbability()</em> returns <em>TRUE</em> (see <a href="/docs/adele/models/probability/">The Probability Model</a>).</li>
 </ol>
 
-<p>See below a detailed description of each featured declaration.</p>
-
-<h3 id="initial-state-of-approximation">Initial state of approximation</h3>
-
-<p>The keyword <em>initial</em> indicates the initial state of the approximation.
-If <em>initial = on</em>, then the approximation will be active and their results modeled since application startup.
-If <em>initial = off</em>, it will be inactive.
-Regardless of the initial state, any approximation can be control at runtime using the <a href="/docs/app#the-control-interface">control interface</a>.</p>
-
 <h3 id="instantiating-implementation-modifiers">Instantiating implementation modifiers</h3>
-
-<p><a href="/docs/adele/models/instruction#implementation-modifiers">Implementation modifiers</a> are methods that modify the simulated behavior of instructions.
-Upon instantiation, these can be applied at 3 distinct moments of the instruction execution: <em>before</em>, <em>after</em> or <em>replacing</em> the original behavior.</p>
-
-<ul>
-<li>The keyword <em>pre_behavior</em> inserts the model implementation <em>before</em> the instruction behavior.<br /></li>
-<li>The keyword <em>post_behavior</em> inserts the model implementation <em>after</em> the instruction behavior.<br /></li>
-<li>The keyword <em>alt_behavior</em> <em>replaces</em> the instruction behavior by the model implementation.<br /></li>
-</ul>
-
-<h3 id="instantiating-data-modifiers">Instantiating data modifiers</h3>
-
-<p><a href="/docs/adele/models/instruction#data-modifiers">Data modifiers</a> are methods that modify the data read from or written to by an instruction.
-Data modifiers are applied to designated operations on storage elements of the simulated hardware.
-The following ADeLe keywords define the operation and storage element in which the data modifiers are applied:</p>
-
-<ul>
-<li><em>mem_read</em> - read operations on (main) memory;<br /></li>
-<li><em>mem_write</em> - write operations on (main) memory;<br /></li>
-<li><em>regbank_read</em> - read operations on a register bank;<br /></li>
-<li><em>regbank_write</em> - write operations on a register bank;<br /></li>
-<li><em>reg_read</em> - read operations on a (special) register;<br /></li>
-<li><em>reg_write</em> - write operations on a (special) register.<br /></li>
-</ul>
 
         <hr />
         <h2> More documentation </h2>
@@ -303,27 +254,6 @@ The following ADeLe keywords define the operation and storage element in which t
   
 </ol>
 
-    
-  </li>
-  
-  <li>
-    
-      <a href="/docs/simulator/">Generating a simulator</a>
-    
-    
-  </li>
-  
-  <li>
-    
-      <a href="/docs/app/">Running an application</a>
-    
-    
-  </li>
-  
-  <li>
-    
-      <a href="/docs/output/">Collecting energy statistics</a>
-    
     
   </li>
   
