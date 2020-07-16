@@ -173,8 +173,13 @@ Abstract Recent research has introduced approximate hardware units that produce 
       <pubDate>Sat, 18 May 2019 11:07:00 -0300</pubDate>
       
       <guid>/publications/</guid>
-      <description>Publications from our group 2020  AxRAM: A Lightweight Implicit Interface for Approximate Data Access João Fabrício Filho, Isaías B. Felzmann, Rodolfo Azevedo and Lucas F. Wanner Future Generation Computer Systems, special issue on Advancing on Approximate Computing: Methodologies, Architectures and Algorithms To appear
- Risk-5: Controlled approximations for RISC-V Isaías B. Felzmann, João Fabrício Filho and Lucas Wanner IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems (TCAD), special issue on Embedded Systems Week (ESWEEK) 2020 To appear</description>
+      <description>Publications from our group 2020  AxRAM: A Lightweight Implicit Interface for Approximate Data Access
+João Fabrício Filho, Isaías B. Felzmann, Rodolfo Azevedo and Lucas F. Wanner
+Future Generation Computer Systems, special issue on Advancing on Approximate Computing: Methodologies, Architectures and Algorithms
+To appear
+ Risk-5: Controlled approximations for RISC-V
+Isaías B. Felzmann, João Fabrício Filho and Lucas Wanner
+IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems (TCAD), special issue on Embedded Systems Week (ESWEEK) 2020</description>
     </item>
     
   </channel>
