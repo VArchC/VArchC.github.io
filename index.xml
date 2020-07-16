@@ -129,7 +129,7 @@ Operating parameters may be implemented as default values for the whole system, 
     </item>
     
     <item>
-      <title>AxRAM @ SBAC-PAD 2019</title>
+      <title>AxRAM @ SBESC 2019</title>
       <link>/blog/sbesc2019/</link>
       <pubDate>Wed, 13 Nov 2019 13:59:00 -0300</pubDate>
       
@@ -173,12 +173,8 @@ Abstract Recent research has introduced approximate hardware units that produce 
       <pubDate>Sat, 18 May 2019 11:07:00 -0300</pubDate>
       
       <guid>/publications/</guid>
-      <description>Publications from our group 2020  ADeLe: A description language for approximate hardware
-Isaías B. Felzmann, Matheus M. Susin, Liana Duenha, Rodolfo Azevedo and Lucas Wanner
-Future Generation Computer Systems, volume 102, pp 245-258
-BibTeX | PDF | DOI  2019  A Resilient Interface for Approximate Data Access
-João Fabrício Filho, Isaías B. Felzmann, Rodolfo Azevedo and Lucas F. Wanner
-IX Brazilian Symposium on Computing Systems Engineering &amp;ndash; SBESC 2019</description>
+      <description>Publications from our group 2020  AxRAM: A Lightweight Implicit Interface for Approximate Data Access João Fabrício Filho, Isaías B. Felzmann, Rodolfo Azevedo and Lucas F. Wanner Future Generation Computer Systems, special issue on Advancing on Approximate Computing: Methodologies, Architectures and Algorithms To appear
+ Risk-5: Controlled approximations for RISC-V Isaías B. Felzmann, João Fabrício Filho and Lucas Wanner IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems (TCAD), special issue on Embedded Systems Week (ESWEEK) 2020 To appear</description>
     </item>
     
   </channel>
