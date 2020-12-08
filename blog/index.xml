@@ -6,10 +6,19 @@
     <description>Recent content in Blogs on VArchC</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 13 Nov 2019 13:59:00 -0300</lastBuildDate>
+    <lastBuildDate>Tue, 08 Dec 2020 16:05:00 -0300</lastBuildDate>
     
 	<atom:link href="/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>AxPIKE @ DATE 2021</title>
+      <link>/blog/date2021/</link>
+      <pubDate>Tue, 08 Dec 2020 16:05:00 -0300</pubDate>
+      
+      <guid>/blog/date2021/</guid>
+      <description>Abstract Representing the interaction between accurate and approximate hardware modules at the architecture level is essential to understand the impact of Approximate Computing in a general-purpose computing scenario. However, extensive effort is required to model approximations into a baseline instruction-level simulator and collect its execution metrics. In this work, we present the AxPIKE ISA simulation environment, a tool that allows designers to inject models of hardware approximation at the instruction level and evaluate their impact on the quality of results.</description>
+    </item>
     
     <item>
       <title>AxRAM @ SBESC 2019</title>
