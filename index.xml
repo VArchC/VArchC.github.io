@@ -129,9 +129,18 @@ Operating parameters may be implemented as default values for the whole system, 
     </item>
     
     <item>
+      <title>Transparent Resilience @ ARCS 2021</title>
+      <link>/blog/arcs2021/</link>
+      <pubDate>Tue, 01 Jun 2021 16:07:00 -0300</pubDate>
+      
+      <guid>/blog/arcs2021/</guid>
+      <description>Abstract Approximate DRAM can reduce energy consumption by exposing application data to probabilistic errors. However, not all data is amenable to approximation, and errors in certain critical data can lead to invalid outputs or application crashes. Identification of critical data typically requires annotations in source code. Transparent protection mechanisms attempt to automatically protect applications from critical data errors without programmer intervention. This work proposes and compares alternatives to transparent data protection for approximate DRAM.</description>
+    </item>
+    
+    <item>
       <title>AxPIKE @ DATE 2021</title>
       <link>/blog/date2021/</link>
-      <pubDate>Tue, 08 Dec 2020 16:05:00 -0300</pubDate>
+      <pubDate>Mon, 01 Feb 2021 16:11:00 -0300</pubDate>
       
       <guid>/blog/date2021/</guid>
       <description>Abstract Representing the interaction between accurate and approximate hardware modules at the architecture level is essential to understand the impact of Approximate Computing in a general-purpose computing scenario. However, extensive effort is required to model approximations into a baseline instruction-level simulator and collect its execution metrics. In this work, we present the AxPIKE ISA simulation environment, a tool that allows designers to inject models of hardware approximation at the instruction level and evaluate their impact on the quality of results.</description>
@@ -179,16 +188,20 @@ Abstract Recent research has introduced approximate hardware units that produce 
     <item>
       <title>Publications</title>
       <link>/publications/</link>
-      <pubDate>Tue, 08 Dec 2020 16:23:00 -0300</pubDate>
+      <pubDate>Tue, 01 Jun 2021 16:30:00 -0300</pubDate>
       
       <guid>/publications/</guid>
-      <description>Publications from our group 2021  AxPIKE: Instruction-level Injection and Evaluation of Approximate Computing
-Isaías B. Felzmann, João Fabrício Filho and Lucas Wanner
+      <description>Publications from our group 2021  Transparent Resilience for Approximate DRAM
+João Fabrício Filho, Isaías Felzmann, and Lucas Wanner
+34th International Conference on Architecture of Computing Systems (ARCS 2021)
+To appear
+More information
+ AxPIKE: Instruction-level Injection and Evaluation of Approximate Computing
+Isaías Felzmann, João Fabrício Filho, and Lucas Wanner
 2021 Design, Automation and Test in Europe Conference Exhibition (DATE)
 To appear
-More information  2020  Risk-5: Controlled approximations for RISC-V
-Isaías B. Felzmann, João Fabrício Filho and Lucas Wanner
-IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems (TCAD), special issue on Embedded Systems Week (ESWEEK) 2020</description>
+More information
+  2020  Risk-5: Controlled approximations for RISC-V</description>
     </item>
     
   </channel>
