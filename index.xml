@@ -129,6 +129,16 @@ Operating parameters may be implemented as default values for the whole system, 
     </item>
     
     <item>
+      <title>SmartApprox: Learning-based Configuration of Approximate Memories forEnergy-efficient Execution</title>
+      <link>/smartapprox/</link>
+      <pubDate>Sun, 13 Jun 2021 19:57:00 -0300</pubDate>
+      
+      <guid>/smartapprox/</guid>
+      <description>Abstract TBA
+Applications    APP benchmark Quality Metric input     2mm Polybench [5] MRE 32x32 double matrices   atax Polybench [5] FEE 500x500 double matrices   blackscholes AxBench [1] MRE 1,000 entries   bunzip2 CBench [3] SSI compressed 256x256 image   bzip2 CBench [3] SSI 256x256 image   correlation Polybench [5] FEE 64x64 long int matrices   covariance Polybench [5] FEE 32x32 double matrices   dijkstra MiBench [4] FEE complete graph of 60 vertices   fannkuch-redux Benchmarks Game [2] MRE N=9   fasta Benchmarks Game [2] FEE N=50,000   fft MiBench [4] MRE Max waves 8, size 1024   floyd-warshall Polybench [5] FEE complete graph of 64 vertices   inversek2j AxBench [1] MRE 1,000 coordinates   jacobi-2d-imper Polybench [5] FEE Arrays of 32 double values   jmeint AxBench [1] FEE 1,0000 coordinates   jpeg AxBench [1] SSI 512x512 image   k-nucleotide Benchmarks Game [2] MRE 2 sequences of 50,000 nucleotides   mandelbrot Benchmarks Game [2] SSI N=500   mm  MRE 100x100 int matrices   nbody Benchmarks Game [2] MRE N=100,000   pi  MRE N=1,000,000   qsort MiBench [4] FEE 10,000 strings   reg_detect Polybench [5] MRE Iter=10,000, Length=32, MaxGrid=6   reverse-complement Benchmarks Game [2] FEE 2 sequences of 50,000 nucleotides   sobel  SSI 256x256 image   spectralnorm Benchmarks Game [2] MRE N=500    Benchmarks repositories:</description>
+    </item>
+    
+    <item>
       <title>Transparent Resilience @ ARCS 2021</title>
       <link>/blog/arcs2021/</link>
       <pubDate>Tue, 01 Jun 2021 16:07:00 -0300</pubDate>
