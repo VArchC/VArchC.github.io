@@ -32,8 +32,7 @@
 
 
   <meta property="og:title" content="SmartApprox: Learning-based Configuration of Approximate Memories forEnergy-efficient Execution" />
-<meta property="og:description" content="Abstract TBA
-Applications    APP benchmark Quality Metric input     2mm Polybench [5] MRE 32x32 double matrices   atax Polybench [5] FEE 500x500 double matrices   blackscholes AxBench [1] MRE 1,000 entries   bunzip2 CBench [3] SSI compressed 256x256 image   bzip2 CBench [3] SSI 256x256 image   correlation Polybench [5] FEE 64x64 long int matrices   covariance Polybench [5] FEE 32x32 double matrices   dijkstra MiBench [4] FEE complete graph of 60 vertices   fannkuch-redux Benchmarks Game [2] MRE N=9   fasta Benchmarks Game [2] FEE N=50,000   fft MiBench [4] MRE Max waves 8, size 1024   floyd-warshall Polybench [5] FEE complete graph of 64 vertices   inversek2j AxBench [1] MRE 1,000 coordinates   jacobi-2d-imper Polybench [5] FEE Arrays of 32 double values   jmeint AxBench [1] FEE 1,0000 coordinates   jpeg AxBench [1] SSI 512x512 image   k-nucleotide Benchmarks Game [2] MRE 2 sequences of 50,000 nucleotides   mandelbrot Benchmarks Game [2] SSI N=500   mm  MRE 100x100 int matrices   nbody Benchmarks Game [2] MRE N=100,000   pi  MRE N=1,000,000   qsort MiBench [4] FEE 10,000 strings   reg_detect Polybench [5] MRE Iter=10,000, Length=32, MaxGrid=6   reverse-complement Benchmarks Game [2] FEE 2 sequences of 50,000 nucleotides   sobel  SSI 256x256 image   spectralnorm Benchmarks Game [2] MRE N=500    Benchmarks repositories:" />
+<meta property="og:description" content="Abstract Approximate memories reduce power and increase energy efficiency, at the expense of errors in stored data. These errors may be tolerated, up to a point, by many applications with negligible impact on the quality of results. Uncontrolled errors in memory may, however, lead to crashes or broken outputs. Error rates are determined by fabrication and operation parameters, and error tolerance depends on algorithms, implementation, and inputs. An ideal configuration features parameters for approximate memory that minimize energy while allowing applications to produce acceptable results." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/smartapprox/" /><meta property="article:published_time" content="2021-06-13T19:57:00-03:00"/>
 <meta property="article:modified_time" content="2021-06-13T19:57:00-03:00"/>
@@ -114,17 +113,19 @@ Applications    APP benchmark Quality Metric input     2mm Polybench [5] MRE 32x
 
 <h2 id="abstract">Abstract</h2>
 
-<p>TBA</p>
+<p>Approximate memories reduce power and increase energy efficiency, at the expense of errors in stored data. These errors may be tolerated, up to a point, by many applications with negligible impact on the quality of results. Uncontrolled errors in memory may, however, lead to crashes or broken outputs. Error rates are determined by fabrication and operation parameters, and error tolerance depends on algorithms, implementation, and inputs. An ideal configuration features parameters for approximate memory that minimize energy while allowing applications to produce acceptable results. This work introduces <tt>SmartApprox</tt>, a framework that configures approximation levels based on features of applications. In <tt>SmartApprox</tt>, a training phase executes a set of applications under different approximation settings, building a knowledge base that correlates application features (e.g., types of instructions and cache efficiency) with suitable approximate memory configurations. At runtime, features of new applications are sampled and approximation knobs are adjusted to correspond to the predicted error tolerance, according to existing knowledge and the current error scenario, in consonance with hardware characterization. In this work, we list and discuss sets of features that influence the approximation results and measure their impact on the error tolerance or applications. We evaluate <tt>SmartApprox</tt> on different voltage-scaled DRAM scenarios using a knowledge base of 26 applications, wherein energy savings of 36% are possible with acceptable output. An evaluation using a combined energy and quality metric shows that <tt>SmartApprox</tt> scores 97% of an exhaustive search for ideal configurations, with significantly lower effort and without application-specific quality evaluation.</p>
 
 <h2 id="applications-applications"><a href="#applications">Applications</a></h2>
 
 <table>
 <thead>
 <tr>
-<th>APP</th>
+<th>application</th>
 <th>benchmark</th>
-<th>Quality Metric</th>
+<th>quality metric</th>
 <th>input</th>
+<th>exec. time</th>
+<th>total instructions</th>
 </tr>
 </thead>
 
@@ -132,8 +133,10 @@ Applications    APP benchmark Quality Metric input     2mm Polybench [5] MRE 32x
 <tr>
 <td>2mm</td>
 <td>Polybench [5]</td>
-<td>MRE</td>
+<td>MAPE</td>
 <td>32x32 double matrices</td>
+<td>46</td>
+<td>8,62E+07</td>
 </tr>
 
 <tr>
@@ -141,13 +144,17 @@ Applications    APP benchmark Quality Metric input     2mm Polybench [5] MRE 32x
 <td>Polybench [5]</td>
 <td>FEE</td>
 <td>500x500 double matrices</td>
+<td>43</td>
+<td>6,72E+07</td>
 </tr>
 
 <tr>
 <td>blackscholes</td>
 <td>AxBench [1]</td>
-<td>MRE</td>
+<td>MAPE</td>
 <td>1,000 entries</td>
+<td>45</td>
+<td>8,20E+07</td>
 </tr>
 
 <tr>
@@ -155,6 +162,8 @@ Applications    APP benchmark Quality Metric input     2mm Polybench [5] MRE 32x
 <td>CBench [3]</td>
 <td>SSI</td>
 <td>compressed 256x256 image</td>
+<td>43</td>
+<td>5,52E+07</td>
 </tr>
 
 <tr>
@@ -162,6 +171,8 @@ Applications    APP benchmark Quality Metric input     2mm Polybench [5] MRE 32x
 <td>CBench [3]</td>
 <td>SSI</td>
 <td>256x256 image</td>
+<td>109</td>
+<td>1,11E+08</td>
 </tr>
 
 <tr>
@@ -169,6 +180,8 @@ Applications    APP benchmark Quality Metric input     2mm Polybench [5] MRE 32x
 <td>Polybench [5]</td>
 <td>FEE</td>
 <td>64x64 long int matrices</td>
+<td>26</td>
+<td>4,77E+07</td>
 </tr>
 
 <tr>
@@ -176,6 +189,8 @@ Applications    APP benchmark Quality Metric input     2mm Polybench [5] MRE 32x
 <td>Polybench [5]</td>
 <td>FEE</td>
 <td>32x32 double matrices</td>
+<td>61</td>
+<td>9,09E+07</td>
 </tr>
 
 <tr>
@@ -183,13 +198,17 @@ Applications    APP benchmark Quality Metric input     2mm Polybench [5] MRE 32x
 <td>MiBench [4]</td>
 <td>FEE</td>
 <td>complete graph of 60 vertices</td>
+<td>18</td>
+<td>3,37E+07</td>
 </tr>
 
 <tr>
 <td>fannkuch-redux</td>
 <td>Benchmarks Game [2]</td>
-<td>MRE</td>
+<td>MAPE</td>
 <td>N=9</td>
+<td>64</td>
+<td>1,29E+08</td>
 </tr>
 
 <tr>
@@ -197,13 +216,17 @@ Applications    APP benchmark Quality Metric input     2mm Polybench [5] MRE 32x
 <td>Benchmarks Game [2]</td>
 <td>FEE</td>
 <td>N=50,000</td>
+<td>10</td>
+<td>2,15E+07</td>
 </tr>
 
 <tr>
 <td>fft</td>
 <td>MiBench [4]</td>
-<td>MRE</td>
+<td>MAPE</td>
 <td>Max waves 8, size 1024</td>
+<td>82</td>
+<td>1,56E+08</td>
 </tr>
 
 <tr>
@@ -211,13 +234,17 @@ Applications    APP benchmark Quality Metric input     2mm Polybench [5] MRE 32x
 <td>Polybench [5]</td>
 <td>FEE</td>
 <td>complete graph of 64 vertices</td>
+<td>68</td>
+<td>1,30E+08</td>
 </tr>
 
 <tr>
 <td>inversek2j</td>
 <td>AxBench [1]</td>
-<td>MRE</td>
+<td>MAPE</td>
 <td>1,000 coordinates</td>
+<td>59</td>
+<td>9,82E+07</td>
 </tr>
 
 <tr>
@@ -225,6 +252,8 @@ Applications    APP benchmark Quality Metric input     2mm Polybench [5] MRE 32x
 <td>Polybench [5]</td>
 <td>FEE</td>
 <td>Arrays of 32 double values</td>
+<td>36</td>
+<td>6,39E+07</td>
 </tr>
 
 <tr>
@@ -232,6 +261,8 @@ Applications    APP benchmark Quality Metric input     2mm Polybench [5] MRE 32x
 <td>AxBench [1]</td>
 <td>FEE</td>
 <td>1,0000 coordinates</td>
+<td>62</td>
+<td>9,77E+07</td>
 </tr>
 
 <tr>
@@ -239,13 +270,17 @@ Applications    APP benchmark Quality Metric input     2mm Polybench [5] MRE 32x
 <td>AxBench [1]</td>
 <td>SSI</td>
 <td>512x512 image</td>
+<td>127</td>
+<td>2,30E+08</td>
 </tr>
 
 <tr>
 <td>k-nucleotide</td>
 <td>Benchmarks Game [2]</td>
-<td>MRE</td>
+<td>MAPE</td>
 <td>2 sequences of 50,000 nucleotides</td>
+<td>121</td>
+<td>9,79E+07</td>
 </tr>
 
 <tr>
@@ -253,27 +288,35 @@ Applications    APP benchmark Quality Metric input     2mm Polybench [5] MRE 32x
 <td>Benchmarks Game [2]</td>
 <td>SSI</td>
 <td>N=500</td>
+<td>28</td>
+<td>7,49E+07</td>
 </tr>
 
 <tr>
 <td>mm</td>
 <td></td>
-<td>MRE</td>
+<td>MAPE</td>
 <td>100x100 int matrices</td>
+<td>42</td>
+<td>8,01E+07</td>
 </tr>
 
 <tr>
 <td>nbody</td>
 <td>Benchmarks Game [2]</td>
-<td>MRE</td>
+<td>MAPE</td>
 <td>N=100,000</td>
+<td>35</td>
+<td>6,48E+07</td>
 </tr>
 
 <tr>
 <td>pi</td>
 <td></td>
-<td>MRE</td>
+<td>MAPE</td>
 <td>N=1,000,000</td>
+<td>17</td>
+<td>3,53E+07</td>
 </tr>
 
 <tr>
@@ -281,13 +324,17 @@ Applications    APP benchmark Quality Metric input     2mm Polybench [5] MRE 32x
 <td>MiBench [4]</td>
 <td>FEE</td>
 <td>10,000 strings</td>
+<td>36</td>
+<td>6,68E+07</td>
 </tr>
 
 <tr>
 <td>reg_detect</td>
 <td>Polybench [5]</td>
-<td>MRE</td>
+<td>MAPE</td>
 <td>Iter=10,000, Length=32, MaxGrid=6</td>
+<td>41</td>
+<td>7,78E+07</td>
 </tr>
 
 <tr>
@@ -295,6 +342,8 @@ Applications    APP benchmark Quality Metric input     2mm Polybench [5] MRE 32x
 <td>Benchmarks Game [2]</td>
 <td>FEE</td>
 <td>2 sequences of 50,000 nucleotides</td>
+<td>30</td>
+<td>5,67E+07</td>
 </tr>
 
 <tr>
@@ -302,13 +351,17 @@ Applications    APP benchmark Quality Metric input     2mm Polybench [5] MRE 32x
 <td></td>
 <td>SSI</td>
 <td>256x256 image</td>
+<td>124</td>
+<td>1,54E+08</td>
 </tr>
 
 <tr>
 <td>spectralnorm</td>
 <td>Benchmarks Game [2]</td>
-<td>MRE</td>
+<td>MAPE</td>
 <td>N=500</td>
+<td>48</td>
+<td>1,26E+08</td>
 </tr>
 </tbody>
 </table>
@@ -325,10 +378,47 @@ Applications    APP benchmark Quality Metric input     2mm Polybench [5] MRE 32x
 
 <p>[5] Polybench: <a href="https://web.cse.ohio-state.edu/~pouchet.2/software/polybench/">https://web.cse.ohio-state.edu/~pouchet.2/software/polybench/</a></p>
 
-<p>Acronyms for quality metrics:
-*  Fraction of Equal Elements (FEE)
-*  Mean Relative Error (MRE)
-*  Structural Similarity Index (SSI)</p>
+<h2 id="quality-metrics-quality"><a href="#quality">Quality Metrics</a></h2>
+
+<p>Quality metrics quantify how different is an approximate output compared to the accurate output. Thus, the quality metric is resulting from a comparison between the outputs of accurate and approximate executions of the same code with the same input.
+The quality metrics express how much the approximate output data array (F) deviates from an accurate output data array (A).
+Below, we show the quality metrics used for each application.</p>
+
+<ul>
+<li><strong>Fraction of Equal Elements (FEE)</strong></li>
+</ul>
+
+<p><img src="FEE.png" alt="FEE" width="300px" /></p>
+
+<p>where:<br />
+    n: the number of elements in the data array; <br />
+    A_i: the i-th element in the accurate array; <br />
+    F_i: the i-th element in the approximate array.</p>
+
+<ul>
+<li><p><strong>Mean Absolute Percentage Error (MAPE)</strong> - <a href="https://en.wikipedia.org/wiki/Mean_absolute_percentage_error">https://en.wikipedia.org/wiki/Mean_absolute_percentage_error</a></p>
+
+<p><img src="MAPE.png" alt="MAPE" width="300px" /></p></li>
+</ul>
+
+<p>where: <br />
+    n: the number of elements in the data array; <br />
+    A_i: the i-th element in the accurate array; <br />
+    F_i: the i-th element in the approximate array.<br /></p>
+
+<ul>
+<li><strong>Structural Similarity Index (SSI)</strong> - <a href="http://doi.org/10.1109/TIP.2003.819861">http://doi.org/10.1109/TIP.2003.819861</a> , <a href="https://en.wikipedia.org/wiki/Structural_similarity">https://en.wikipedia.org/wiki/Structural_similarity</a></li>
+</ul>
+
+<p><img src="SSI.png" alt="SSI" width="300px" /></p>
+
+<p>where:<br />
+    μ_x: the average of the array x;<br />
+    δ<em>x^2: the variance of the array x;<br />
+    δ</em>{xy}: the covariance of x and y;<br />
+    c_1 = (k_1L)^2, c_2=(k_2L)^2 : two variables to stabilize the division with weak denominator;<br />
+    L: the dynamic range of the pixel values (typicaly 2^{#bits per pixel} - 1);<br />
+    k_1 = 0.01 and k_2=0.03.</p>
 
   
 </main>
