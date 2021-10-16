@@ -129,11 +129,11 @@ Operating parameters may be implemented as default values for the whole system, 
     </item>
     
     <item>
-      <title>SmartApprox: Learning-based Configuration of Approximate Memories forEnergy-efficient Execution</title>
-      <link>/smartapprox/</link>
-      <pubDate>Sun, 13 Jun 2021 19:57:00 -0300</pubDate>
+      <title>SmartApprox: Learning-based Configuration of Approximate Memories for Energy-efficient Execution</title>
+      <link>/blog/smartapprox/</link>
+      <pubDate>Sat, 16 Oct 2021 15:20:00 -0300</pubDate>
       
-      <guid>/smartapprox/</guid>
+      <guid>/blog/smartapprox/</guid>
       <description>Abstract Approximate memories reduce power and increase energy efficiency, at the expense of errors in stored data. These errors may be tolerated, up to a point, by many applications with negligible impact on the quality of results. Uncontrolled errors in memory may, however, lead to crashes or broken outputs. Error rates are determined by fabrication and operation parameters, and error tolerance depends on algorithms, implementation, and inputs. An ideal configuration features parameters for approximate memory that minimize energy while allowing applications to produce acceptable results.</description>
     </item>
     
