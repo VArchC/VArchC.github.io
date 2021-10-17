@@ -200,17 +200,13 @@ Abstract Recent research has introduced approximate hardware units that produce 
       <pubDate>Tue, 01 Jun 2021 16:30:00 -0300</pubDate>
       
       <guid>/publications/</guid>
-      <description>Publications from our group 2021  Transparent Resilience for Approximate DRAM
+      <description>Publications from our group 2021  How much quality is enough quality? A case for acceptability in approximate designs
+Isaías Felzmann, João Fabrício Filho, Juliane Regina de Oliveira, and Lucas Wanner
+The 39th IEEE International Conference on Computer Design (ICCD 2021)
+To appear
+ SmartApprox: Learning-based Configuration of Approximate Memories for Energy-efficient Execution
 João Fabrício Filho, Isaías Felzmann, and Lucas Wanner
-34th International Conference on Architecture of Computing Systems (ARCS 2021)
-To appear
-More information
- AxPIKE: Instruction-level Injection and Evaluation of Approximate Computing
-Isaías Felzmann, João Fabrício Filho, and Lucas Wanner
-2021 Design, Automation and Test in Europe Conference Exhibition (DATE)
-To appear
-More information
-  2020  Risk-5: Controlled approximations for RISC-V</description>
+The 12th International Green and Sustainable Computing Conference (IGSC 2021)</description>
     </item>
     
   </channel>
